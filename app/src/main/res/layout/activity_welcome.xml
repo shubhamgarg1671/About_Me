@@ -8,6 +8,7 @@
     android:orientation="vertical"
     tools:context=".Welcome">
 
+
     <TextView
         android:layout_width="220dp"
         android:layout_height="63dp"
@@ -23,6 +24,7 @@
         android:layout_height="16dp"
         android:layout_marginLeft="24dp"
         android:layout_marginTop="16dp"
+        android:textColor="#AAAAAA"
         android:text="Come on, register and start explore the world"
         android:layout_marginStart="24dp" />
     
@@ -33,6 +35,5 @@
         android:layout_marginTop="19.27dp"
         android:src="@drawable/ic_group_14431"
         android:layout_marginStart="55.98dp" />
-    
 
 </LinearLayout>
