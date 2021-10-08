@@ -107,32 +107,6 @@ class LoginActivity : AppCompatActivity() {
                 .build()
             PhoneAuthProvider.verifyPhoneNumber(options)
         }
-//        // Configure Google Sign In
-//        val gso = GoogleSignInOptions.Builder(GoogleSignInOptions.DEFAULT_SIGN_IN)
-//            .requestIdToken(getString())   //getString(R.string.default_web_client_id)
-//            .requestEmail()
-//            .build()
-//
-//        val googleSignInClient = GoogleSignIn.getClient(this, gso)
-
-        //https://stackoverflow.com/a/63654043/12575211
-//        val resultLauncher = registerForActivityResult(ActivityResultContracts.StartActivityForResult()) { result ->
-//            if (result.resultCode == Activity.RESULT_OK) {
-//                // There are no request codes
-//                val data: Intent? = result.data
-//                val task: Task<GoogleSignInAccount> =
-//                    GoogleSignIn.getSignedInAccountFromIntent(data)
-//                handleSignInResult(task)
-//            }
-//        }
-
-//        googleSignInButton = findViewById(R.id.googleSignInButton)
-//        googleSignInButton.setOnClickListener {
-//            Log.d(TAG, "googleSighIn button clicked")
-//            val signInIntent = googleSignInClient.getSignInIntent()
-//            //    startActivityForResult(signInIntent, RC_SIGN_IN);    //this has been depricated
-//            resultLauncher.launch(signInIntent)   //https://stackoverflow.com/a/63654043/12575211
-//        }
     }
 
     public override fun onStart() {
