@@ -8,41 +8,45 @@
     android:orientation="vertical"
     tools:context=".Welcome">
 
-
     <TextView
-        android:layout_width="220dp"
-        android:layout_height="63dp"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
         android:layout_marginLeft="24dp"
+        android:layout_marginRight="24dp"
+        android:layout_marginEnd="24dp"
+        android:layout_marginStart="24dp"
         android:layout_marginTop="108dp"
         android:textColor="#0B040C"
         android:text="Common Space For all Social Media"
-        android:textSize="24sp"
-        android:layout_marginStart="24dp" />
+        android:textSize="24sp" />
 
     <TextView
-        android:layout_width="283dp"
-        android:layout_height="16dp"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
         android:layout_marginLeft="24dp"
+        android:layout_marginRight="24dp"
+        android:layout_marginEnd="24dp"
+        android:layout_marginStart="24dp"
         android:layout_marginTop="16dp"
         android:textColor="#AAAAAA"
-        android:text="Come on, register and start explore the world"
-        android:layout_marginStart="24dp" />
+        android:text="Come on, register and start explore the world" />
     
     <ImageView
-        android:layout_width="251.02dp"
-        android:layout_height="229.45dp"
-        android:layout_marginLeft="55.98dp"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginLeft="55dp"
+        android:layout_marginRight="24dp"
+        android:layout_marginEnd="24dp"
+        android:layout_marginStart="24dp"
         android:layout_marginTop="19.27dp"
-        android:src="@drawable/ic_group_14431"
-        android:layout_marginStart="55.98dp" />
+        android:src="@drawable/ic_group_14431" />
 
     <Button
         android:id="@+id/getStartedButton"
-        android:layout_width="327dp"
-        android:layout_height="52dp"
-        android:layout_marginTop="36dp"
-        android:layout_marginLeft="24dp"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_gravity="bottom"
+        android:layout_margin="30dp"
         android:background="@drawable/my_button"
-        android:text="Get Started"
-        android:layout_marginStart="24dp" />
+        android:text="Get Started" />
 </LinearLayout>
