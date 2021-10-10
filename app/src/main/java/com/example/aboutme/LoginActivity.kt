@@ -2,6 +2,7 @@ package com.example.aboutme
 
 import android.content.Intent
 import android.os.Bundle
+import android.provider.AlarmClock.EXTRA_MESSAGE
 import android.util.Log
 import android.view.View
 import android.widget.*
@@ -16,18 +17,16 @@ import java.util.concurrent.TimeUnit
 class LoginActivity : AppCompatActivity() {
     private lateinit var auth: FirebaseAuth
     lateinit var otpView: OtpView
-    lateinit var button1SigninPage: Button
+    //lateinit var button1SigninPage: Button
     lateinit var signInProgress:ProgressBar
     val TAG = "logInActivity"
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_login)
 
-        var storedVerificationId = ""
+        var storedVerificationId = intent.getStringExtra(EXTRA_MESSAGE)
         var resendToken: PhoneAuthProvider.ForceResendingToken
         otpView = findViewById(R.id.otp_view)
-        button1SigninPage = findViewById(R.id.button1SigninPage)
-        signInProgress = findViewById(R.id.signInProgress)
         otpView.setOtpCompletionListener(object : OnOtpCompletionListener {
             override fun onOtpCompleted(otp: String?) {
                 val credential =
@@ -58,7 +57,7 @@ class LoginActivity : AppCompatActivity() {
                 // This callback is invoked in an invalid request for verification is made,
                 // for instance if the the phone number format is not valid.
                 Log.w(TAG, "onVerificationFailed", e)
-                button1SigninPage.visibility = View.VISIBLE
+                //button1SigninPage.visibility = View.VISIBLE
 
                 if (e is FirebaseAuthInvalidCredentialsException) {
                     // Invalid request
@@ -70,7 +69,7 @@ class LoginActivity : AppCompatActivity() {
                 }
 
                 // Show a message and update the UI
-                button1SigninPage.visibility = View.VISIBLE
+//                button1SigninPage.visibility = View.VISIBLE
 
             }
 
@@ -92,19 +91,19 @@ class LoginActivity : AppCompatActivity() {
                 resendToken = token
             }
         }
-        button1SigninPage.setOnClickListener {
-            button1SigninPage.visibility = View.GONE
-            signInProgress.visibility = View.VISIBLE
-            val country_code = findViewById<EditText>(R.id.country_code)
-            val phoneNumber = findViewById<EditText>(R.id.phone)
-            val options = PhoneAuthOptions.newBuilder(auth)
-                .setPhoneNumber(country_code.text.toString() + phoneNumber.text.toString())       // Phone number to verify
-                .setTimeout(60L, TimeUnit.SECONDS) // Timeout and unit
-                .setActivity(this)                 // Activity (for callback binding)
-                .setCallbacks(callbacks)          // OnVerificationStateChangedCallbacks
-                .build()
-            PhoneAuthProvider.verifyPhoneNumber(options)
-        }
+//        button1SigninPage.setOnClickListener {
+//            button1SigninPage.visibility = View.GONE
+//            signInProgress.visibility = View.VISIBLE
+//            val country_code = findViewById<EditText>(R.id.country_code)
+//            val phoneNumber = findViewById<EditText>(R.id.phone)
+//            val options = PhoneAuthOptions.newBuilder(auth)
+//                .setPhoneNumber(country_code.text.toString() + phoneNumber.text.toString())       // Phone number to verify
+//                .setTimeout(60L, TimeUnit.SECONDS) // Timeout and unit
+//                .setActivity(this)                 // Activity (for callback binding)
+//                .setCallbacks(callbacks)          // OnVerificationStateChangedCallbacks
+//                .build()
+//            PhoneAuthProvider.verifyPhoneNumber(options)
+//        }
     }
 
     public override fun onStart() {
@@ -133,7 +132,7 @@ class LoginActivity : AppCompatActivity() {
                         Toast.makeText(applicationContext, "Invalid OTP", Toast.LENGTH_LONG).show()
                         otpView.visibility = View.GONE
                         signInProgress.visibility = View.GONE
-                        button1SigninPage.visibility = View.VISIBLE
+//                        button1SigninPage.visibility = View.VISIBLE
                     }
                     // Update UI
                 }
