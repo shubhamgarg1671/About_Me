@@ -30,11 +30,9 @@ class LoginActivity : AppCompatActivity() {
         signInProgress = findViewById(R.id.signInProgress)
         otpView.setOtpCompletionListener(object : OnOtpCompletionListener {
             override fun onOtpCompleted(otp: String?) {
-                Log.d(TAG, "Entered otp = $otp sstoredVerificationId = $storedVerificationId")
                 val credential =
                     PhoneAuthProvider.getCredential(storedVerificationId!!, otp.toString())
                 // do Stuff to check if otp entered is correct
-                Log.d("onOtpCompleted=>", otp!!)
                 signInWithPhoneAuthCredential(credential)
             }
         })
@@ -118,36 +116,6 @@ class LoginActivity : AppCompatActivity() {
         }
     }
 
-//    private fun handleSignInResult(task: Task<GoogleSignInAccount>) {
-//        try {
-//            val account: GoogleSignInAccount? = task.getResult(ApiException::class.java)
-//
-//            firebaseAuthWithGoogle(account?.idToken!!)
-//        } catch (e: ApiException) {
-//            // The ApiException status code indicates the detailed failure reason.
-//            // Please refer to the GoogleSignInStatusCodes class reference for more information.
-//            Log.w(TAG, "signInResult:failed code=" + e.statusCode)
-//            googleFailedUpdateUI()
-//        }
-//    }
-
-//    private fun firebaseAuthWithGoogle(idToken: String) {
-//        val credential = GoogleAuthProvider.getCredential(idToken, null)
-//        auth.signInWithCredential(credential)
-//            .addOnCompleteListener(this) { task ->
-//                if (task.isSuccessful) {
-//                    // Sign in success, update UI with the signed-in user's information
-//                    Log.d(TAG, "signInWithCredential:success")
-//                    val user = auth.currentUser
-//                    afterLogIn(user!!)
-//                } else {
-//                    // If sign in fails, display a message to the user.
-//                    Log.w(TAG, "signInWithCredential:failure", task.exception)
-//                    googleFailedUpdateUI()
-//                }
-//            }
-//    }
-
     private fun signInWithPhoneAuthCredential(credential: PhoneAuthCredential) {
         auth.signInWithCredential(credential)
             .addOnCompleteListener(this) { task ->
@@ -178,9 +146,4 @@ class LoginActivity : AppCompatActivity() {
         startActivity(intent)
         finish()
     }
-
-//    fun googleFailedUpdateUI () {
-//        Toast.makeText(applicationContext, "google SignIn not working", Toast.LENGTH_LONG).show()
-//        googleSignInButton.visibility = View.GONE
-//    }
 }

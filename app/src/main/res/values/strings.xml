@@ -1,3 +1,5 @@
 <resources>
     <string name="app_name">About Me</string>
+    <string name="welcome_to_aboutme"><font color='#0B040C'>Welcome to </font><font color='#FA6986'>AboutMe</font></string>
+    <string name="by_continuing_you_are_indicating_that_you_agree_to_the_privacy_policy_and_terms">By continuing, you are indicating that you agree to the <b>Privacy Policy</b> and <b>Terms</b>.</string>
 </resources>
