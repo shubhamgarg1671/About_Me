@@ -6,10 +6,7 @@ import android.os.Bundle
 import android.provider.AlarmClock.EXTRA_MESSAGE
 import android.util.Log
 import android.view.View
-import android.widget.Button
-import android.widget.EditText
-import android.widget.TextView
-import android.widget.Toast
+import android.widget.*
 import androidx.constraintlayout.widget.ConstraintLayout
 import com.google.firebase.FirebaseException
 import com.google.firebase.FirebaseTooManyRequestsException
@@ -23,9 +20,11 @@ class EnterPhoneNumber : AppCompatActivity() {
     lateinit var otpView: OtpView
     var codeSent: Boolean = false
     val TAG = "EnterPhoneNumber"
+    lateinit var progressBarLogIn:ProgressBar
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_enter_phone_number)
+        progressBarLogIn = findViewById(R.id.progressBarLogIn)
         changeLayout(codeSent)
         var storedVerificationId = ""
         var resendToken: PhoneAuthProvider.ForceResendingToken
@@ -34,6 +33,8 @@ class EnterPhoneNumber : AppCompatActivity() {
         otpView = findViewById(R.id.otp_view)
         otpView.setOtpCompletionListener(object : OnOtpCompletionListener {
             override fun onOtpCompleted(otp: String?) {
+                progressBarLogIn.visibility = View.VISIBLE
+
                 val credential =
                     PhoneAuthProvider.getCredential(storedVerificationId!!, otp.toString())
                 // do Stuff to check if otp entered is correct
@@ -68,7 +69,6 @@ class EnterPhoneNumber : AppCompatActivity() {
                     // The SMS quota for the project has been exceeded
                     Toast.makeText(applicationContext, "Server Error", Toast.LENGTH_LONG).show()
                 }
-
                 // Show a message and update the UI
 
             }
@@ -94,6 +94,8 @@ class EnterPhoneNumber : AppCompatActivity() {
 
         val button_enter_phone:Button = findViewById(R.id.button_enter_phone)
         button_enter_phone.setOnClickListener {
+            progressBarLogIn.visibility = View.VISIBLE
+            button_enter_phone.visibility = View.GONE
             val phoneNumber: String = findViewById<EditText>(R.id.country_code).text.toString() + findViewById<EditText>(R.id.phone_number).text.toString()
             val showPhoneNumber:TextView = findViewById(R.id.show_phone_number)
             showPhoneNumber.setText(phoneNumber)
@@ -104,14 +106,26 @@ class EnterPhoneNumber : AppCompatActivity() {
                 .setCallbacks(callbacks)          // OnVerificationStateChangedCallbacks
                 .build()
             PhoneAuthProvider.verifyPhoneNumber(options)
-
+        }
+        val didn_t_get_the_code:TextView = findViewById(R.id.didn_t_get_the_code)
+        didn_t_get_the_code.setOnClickListener {
+            button_enter_phone.performClick()
+            codeSent = false
+            button_enter_phone.visibility = View.VISIBLE
+            changeLayout(codeSent)
+        }
+        val tryAnotherNumber:TextView = findViewById(R.id.tryAnotherNumber)
+        tryAnotherNumber.setOnClickListener {
+            codeSent = false
+            button_enter_phone.visibility = View.VISIBLE
+            changeLayout(codeSent)
         }
     }
 
     private fun changeLayout(codeSent: Boolean) {
         val Enter_Phone_layout:ConstraintLayout = findViewById(R.id.Enter_Phone_layout)
         val onCodeSentLayout:ConstraintLayout = findViewById(R.id.onCodeSentLayout)
-
+        progressBarLogIn.visibility = View.GONE
         if (codeSent) {
             Enter_Phone_layout.visibility = View.GONE
             onCodeSentLayout.visibility = View.VISIBLE
@@ -139,6 +153,7 @@ class EnterPhoneNumber : AppCompatActivity() {
 
                     }
                     // Update UI
+                    progressBarLogIn.visibility = View.GONE
                 }
             }
     }
