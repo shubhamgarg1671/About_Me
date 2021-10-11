@@ -8,26 +8,38 @@ import android.util.Log
 import android.view.View
 import android.widget.Button
 import android.widget.EditText
+import android.widget.TextView
 import android.widget.Toast
+import androidx.constraintlayout.widget.ConstraintLayout
 import com.google.firebase.FirebaseException
 import com.google.firebase.FirebaseTooManyRequestsException
 import com.google.firebase.auth.*
+import com.mukesh.OnOtpCompletionListener
+import com.mukesh.OtpView
 import java.util.concurrent.TimeUnit
 
 class EnterPhoneNumber : AppCompatActivity() {
     lateinit var auth: FirebaseAuth
+    lateinit var otpView: OtpView
+    var codeSent: Boolean = false
     val TAG = "EnterPhoneNumber"
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_enter_phone_number)
-
+        changeLayout(codeSent)
         var storedVerificationId = ""
         var resendToken: PhoneAuthProvider.ForceResendingToken
-
-
         // Initialize Firebase Aut0h
         auth = FirebaseAuth.getInstance()
-
+        otpView = findViewById(R.id.otp_view)
+        otpView.setOtpCompletionListener(object : OnOtpCompletionListener {
+            override fun onOtpCompleted(otp: String?) {
+                val credential =
+                    PhoneAuthProvider.getCredential(storedVerificationId!!, otp.toString())
+                // do Stuff to check if otp entered is correct
+                signInWithPhoneAuthCredential(credential)
+            }
+        })
         // callbacks for Phone uth vie Otp
         val callbacks = object : PhoneAuthProvider.OnVerificationStateChangedCallbacks() {
 
@@ -39,6 +51,7 @@ class EnterPhoneNumber : AppCompatActivity() {
                 //     detect the incoming verification SMS and perform verification without
                 //     user action.
                 Log.d(TAG, "onVerificationCompleted:$credential")
+                Toast.makeText(this@EnterPhoneNumber, "OTP fetched Automatically", Toast.LENGTH_SHORT).show()
                 signInWithPhoneAuthCredential(credential)
             }
 
@@ -66,25 +79,24 @@ class EnterPhoneNumber : AppCompatActivity() {
             ) {
                 // The SMS verification code has been sent to the provided phone number, we
                 // now need to ask the user to enter the code and then construct a credential
+
                 // by combining the code with a verification ID.
                 Log.d(TAG, "onCodeSent:$verificationId")
-
-//                otpView.requestFocus();
+                codeSent = true
+                changeLayout(codeSent)
+                otpView.requestFocus();
 
                 // Save verification ID and resending token so we can use them later
                 storedVerificationId = verificationId
                 resendToken = token
-                val intent = Intent(this@EnterPhoneNumber, LoginActivity::class.java).apply() {
-                    putExtra(EXTRA_MESSAGE, verificationId)
-                }
-                startActivity(intent)
             }
         }
 
         val button_enter_phone:Button = findViewById(R.id.button_enter_phone)
         button_enter_phone.setOnClickListener {
             val phoneNumber: String = findViewById<EditText>(R.id.country_code).text.toString() + findViewById<EditText>(R.id.phone_number).text.toString()
-
+            val showPhoneNumber:TextView = findViewById(R.id.show_phone_number)
+            showPhoneNumber.setText(phoneNumber)
             val options = PhoneAuthOptions.newBuilder(auth)
                 .setPhoneNumber(phoneNumber)       // Phone number to verify
                 .setTimeout(60L, TimeUnit.SECONDS) // Timeout and unit
@@ -95,6 +107,20 @@ class EnterPhoneNumber : AppCompatActivity() {
 
         }
     }
+
+    private fun changeLayout(codeSent: Boolean) {
+        val Enter_Phone_layout:ConstraintLayout = findViewById(R.id.Enter_Phone_layout)
+        val onCodeSentLayout:ConstraintLayout = findViewById(R.id.onCodeSentLayout)
+
+        if (codeSent) {
+            Enter_Phone_layout.visibility = View.GONE
+            onCodeSentLayout.visibility = View.VISIBLE
+        } else {
+            Enter_Phone_layout.visibility = View.VISIBLE
+            onCodeSentLayout.visibility = View.GONE
+        }
+    }
+
     fun signInWithPhoneAuthCredential(credential: PhoneAuthCredential) {
         auth.signInWithCredential(credential)
             .addOnCompleteListener(this) { task ->
@@ -120,6 +146,6 @@ class EnterPhoneNumber : AppCompatActivity() {
         Log.d(TAG, "afterLogIn() called with: currentUser = $currentUser")
         val intent = Intent(this, MainActivity::class.java)
         startActivity(intent)
-        finish()
+        this.finishAffinity()
     }
 }
