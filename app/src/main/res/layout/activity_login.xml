@@ -18,7 +18,7 @@
         app:layout_constraintTop_toTopOf="parent" />
 
     <ImageView
-        android:id="@+id/imageView"
+        android:id="@+id/addProfileImage"
         android:layout_width="150dp"
         android:layout_height="150dp"
         android:layout_margin="30dp"
@@ -33,7 +33,7 @@
         android:text="Here we go!"
         android:textColor="#0B040C"
         android:textSize="24sp"
-        app:layout_constraintTop_toBottomOf="@+id/imageView"
+        app:layout_constraintTop_toBottomOf="@+id/addProfileImage"
         android:layout_marginStart="24dp"
         android:layout_marginLeft="24dp" />
 
@@ -53,7 +53,7 @@
         android:layout_height="wrap_content"
         android:layout_margin="24dp"
         android:orientation="vertical"
-        app:layout_constraintBottom_toTopOf="@+id/button"
+        app:layout_constraintBottom_toTopOf="@+id/LoginCompletedButton"
         app:layout_constraintTop_toBottomOf="@+id/textView7"
         tools:layout_editor_absoluteX="24dp">
 
@@ -81,7 +81,7 @@
     </LinearLayout>
 
     <Button
-        android:id="@+id/button"
+        android:id="@+id/LoginCompletedButton"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:text="Continue"
