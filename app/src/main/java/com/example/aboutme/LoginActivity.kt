@@ -8,10 +8,7 @@ import android.net.Uri
 import android.os.Bundle
 import android.provider.MediaStore
 import android.util.Log
-import android.widget.Button
-import android.widget.ImageView
-import android.widget.ProgressBar
-import android.widget.Toast
+import android.widget.*
 import androidx.appcompat.app.AppCompatActivity
 import com.google.firebase.auth.FirebaseAuth
 import com.google.firebase.database.FirebaseDatabase
@@ -34,6 +31,7 @@ class LoginActivity : AppCompatActivity() {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_login)
         val storage = Firebase.storage
+        var myref = database.getReference("user/${auth.uid}/profileImage")
         // Create a storage reference from our app
         val storageRef = storage.reference
         database = FirebaseDatabase.getInstance()
@@ -52,21 +50,29 @@ class LoginActivity : AppCompatActivity() {
             val imagesRef = storageRef.child("image/${auth.uid}/profilePicture")
             val uploadTask = imagesRef.putBytes(data)
                 uploadTask.addOnFailureListener {
-                Log.d(TAG, "onCreate() called $it")
+                Log.e(TAG, "onCreate() called $it")
              // Handle unsuccessful uploads
             }.addOnSuccessListener { taskSnapshot ->
                 // taskSnapshot.metadata contains file metadata such as size, content-type, etc.
                 // ...
                 imagesRef.downloadUrl.addOnCompleteListener { task ->
                         val profileImageUrl = task.result.toString()
-                        Log.i("URL", profileImageUrl)
-                    val myref = database.getReference("user/${auth.uid}/profileImage")
+            //        myref = database.getReference("user/${auth.uid}/profileImage")
                     myref.setValue(profileImageUrl)
                 }
                 .addOnFailureListener { e ->
-                    Log.d(TAG, "onCreate() called with: e = $e")
+                    Log.e(TAG, "onCreate() called with: e = $e")
                 }
             }
+            val username:String = findViewById<EditText>(R.id.username_edittext).text.toString()
+            myref = database.getReference("user/${auth.uid}/username")
+            myref.setValue(username)
+            val profileName:String = findViewById<EditText>(R.id.profileName_edittext).text.toString()
+            myref = database.getReference("user/${auth.uid}/profileName")
+            myref.setValue(profileName)
+            val bio:String = findViewById<EditText>(R.id.bio_edittext).text.toString()
+            myref = database.getReference("user/${auth.uid}/bio")
+            myref.setValue(bio)
         }
         addProfileImage.setOnClickListener {
             val galleryIntent =

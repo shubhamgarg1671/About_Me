@@ -58,6 +58,7 @@
         tools:layout_editor_absoluteX="24dp">
 
         <EditText
+            android:id="@+id/username_edittext"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:hint="Username"
@@ -65,6 +66,7 @@
             app:layout_constraintTop_toBottomOf="@+id/textView7" />
 
         <EditText
+            android:id="@+id/profileName_edittext"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:hint="Profile Name"
@@ -72,6 +74,7 @@
             app:layout_constraintTop_toBottomOf="@+id/textView7" />
 
         <EditText
+            android:id="@+id/bio_edittext"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:hint="Bio"
