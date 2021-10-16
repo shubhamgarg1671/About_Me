@@ -30,11 +30,12 @@ class LoginActivity : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_login)
+        auth = FirebaseAuth.getInstance()
+        database = FirebaseDatabase.getInstance()
         val storage = Firebase.storage
         var myref = database.getReference("user/${auth.uid}/profileImage")
         // Create a storage reference from our app
         val storageRef = storage.reference
-        database = FirebaseDatabase.getInstance()
         auth = FirebaseAuth.getInstance()
         addProfileImage = findViewById(R.id.addProfileImage)
         LoginCompletedButton = findViewById(R.id.LoginCompletedButton)
@@ -57,7 +58,7 @@ class LoginActivity : AppCompatActivity() {
                 // ...
                 imagesRef.downloadUrl.addOnCompleteListener { task ->
                         val profileImageUrl = task.result.toString()
-            //        myref = database.getReference("user/${auth.uid}/profileImage")
+                    myref = database.getReference("user/${auth.uid}/profileImage")
                     myref.setValue(profileImageUrl)
                 }
                 .addOnFailureListener { e ->
