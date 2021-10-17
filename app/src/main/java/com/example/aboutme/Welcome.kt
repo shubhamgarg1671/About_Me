@@ -17,17 +17,17 @@ class Welcome : AppCompatActivity() {
         auth = FirebaseAuth.getInstance()
         val getStartedButton: Button = findViewById(R.id.getStartedButton);
         getStartedButton.setOnClickListener {
-            val intent = Intent(this, LoginActivity::class.java)
+            val intent = Intent(this, EnterPhoneNumber::class.java)
             startActivity(intent)
         }
     }
     public override fun onStart() {
         super.onStart()
         // Check if user is signed in (non-null) and update UI accordingly.
-//        val currentUser = auth.currentUser
-//        if (currentUser != null) {
-//            afterLogIn(currentUser)
-//        }
+        val currentUser = auth.currentUser
+        if (currentUser != null) {
+            afterLogIn(currentUser)
+        }
     }
     fun afterLogIn(currentUser: FirebaseUser) {
         val intent = Intent(this, MainActivity::class.java)
