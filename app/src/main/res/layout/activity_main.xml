@@ -68,6 +68,7 @@
             android:id="@+id/addFacebookButton"
             android:layout_width="wrap_content"
             android:layout_height="match_parent"
+            android:text="fb"
             app:layout_constraintEnd_toStartOf="@+id/addInstagramButton"
             app:layout_constraintHorizontal_bias="0.5"
             app:layout_constraintStart_toStartOf="parent" />
@@ -76,6 +77,7 @@
             android:id="@+id/addInstagramButton"
             android:layout_width="wrap_content"
             android:layout_height="match_parent"
+            android:text="insta"
             app:layout_constraintEnd_toStartOf="@+id/addLinkedinButton"
             app:layout_constraintHorizontal_bias="0.5"
             app:layout_constraintStart_toEndOf="@+id/addFacebookButton" />
@@ -84,6 +86,7 @@
             android:id="@+id/addLinkedinButton"
             android:layout_width="wrap_content"
             android:layout_height="match_parent"
+            android:text="link"
             app:layout_constraintEnd_toStartOf="@+id/addMoreProfileButton"
             app:layout_constraintHorizontal_bias="0.5"
             app:layout_constraintStart_toEndOf="@+id/addInstagramButton" />
@@ -92,6 +95,7 @@
             android:id="@+id/addMoreProfileButton"
             android:layout_width="wrap_content"
             android:layout_height="match_parent"
+            android:text="+"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintHorizontal_bias="0.5"
             app:layout_constraintStart_toEndOf="@+id/addLinkedinButton" />
