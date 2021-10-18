@@ -60,6 +60,7 @@
         app:layout_constraintTop_toBottomOf="@+id/bio_text" />
 
     <androidx.constraintlayout.widget.ConstraintLayout
+        android:id="@+id/socialLinks"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         app:layout_constraintTop_toBottomOf="@+id/add_to_bio">
@@ -100,5 +101,52 @@
             app:layout_constraintHorizontal_bias="0.5"
             app:layout_constraintStart_toEndOf="@+id/addLinkedinButton" />
 
+
+
     </androidx.constraintlayout.widget.ConstraintLayout>
- </androidx.constraintlayout.widget.ConstraintLayout>
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:id="@+id/contactDetails"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        app:layout_constraintTop_toBottomOf="@+id/socialLinks">
+
+        <ImageButton
+            android:id="@+id/addEmailButton"
+            android:layout_width="wrap_content"
+            android:layout_height="match_parent"
+            android:text="fb"
+            android:src="@drawable/ic_baseline_email_24"
+            app:layout_constraintEnd_toStartOf="@+id/addAddressButton"
+            app:layout_constraintHorizontal_bias="0.5"
+            app:layout_constraintStart_toStartOf="parent" />
+
+        <ImageButton
+            android:id="@+id/addAddressButton"
+            android:layout_width="wrap_content"
+            android:layout_height="match_parent"
+            android:text="insta"
+            app:layout_constraintEnd_toStartOf="@+id/addPhoneButton"
+            app:layout_constraintHorizontal_bias="0.5"
+            app:layout_constraintStart_toEndOf="@+id/addEmailButton" />
+
+        <Button
+            android:id="@+id/addPhoneButton"
+            android:layout_width="wrap_content"
+            android:layout_height="match_parent"
+            android:text="link"
+            app:layout_constraintEnd_toStartOf="@+id/addWebsiteButton"
+            app:layout_constraintHorizontal_bias="0.5"
+            app:layout_constraintStart_toEndOf="@+id/addAddressButton" />
+
+        <Button
+            android:id="@+id/addWebsiteButton"
+            android:layout_width="wrap_content"
+            android:layout_height="match_parent"
+            android:text="+"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="0.5"
+            app:layout_constraintStart_toEndOf="@+id/addPhoneButton" />
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
+
+</androidx.constraintlayout.widget.ConstraintLayout>
