@@ -9,21 +9,27 @@ import android.provider.MediaStore
 import android.util.Log
 import android.widget.EditText
 import android.widget.ImageView
+import android.widget.TextView
 import android.widget.Toast
 import androidx.appcompat.app.AlertDialog
 import androidx.appcompat.app.AppCompatActivity
 import com.google.firebase.auth.FirebaseAuth
+import com.google.firebase.database.DataSnapshot
+import com.google.firebase.database.DatabaseError
 import com.google.firebase.database.FirebaseDatabase
+import com.google.firebase.database.ValueEventListener
+import com.google.firebase.database.ktx.getValue
 import com.google.firebase.storage.FirebaseStorage
 import com.google.firebase.storage.StorageReference
 import java.io.FileNotFoundException
 import java.io.InputStream
 
-
 class MainActivity : AppCompatActivity() {
     val TAG = "MainActivity"
     private val PICK_FROM_GALLARY = 2
     lateinit var addProfileImage:ImageView
+    lateinit var profileName:TextView
+    lateinit var bio_text:TextView
     var temporaryString:String = ""
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -31,6 +37,27 @@ class MainActivity : AppCompatActivity() {
         val auth = FirebaseAuth.getInstance()
         val uid:String = auth.uid!!
         val database = FirebaseDatabase.getInstance()
+        profileName = findViewById(R.id.profileName)
+        bio_text = findViewById(R.id.bio_text)
+        var myRef = database.getReference("user/$uid")
+        myRef.addValueEventListener(object : ValueEventListener {
+            override fun onDataChange(dataSnapshot: DataSnapshot) {
+                // This method is called once with the initial value and again
+                // whenever data at this location is updated.
+//                val value = dataSnapshot.getValue()
+//                Log.d(TAG, "Value is: $value")
+
+                profileName.setText(dataSnapshot.child("profileName").getValue<String>())
+                bio_text.setText(dataSnapshot.child("bio").getValue<String>())
+            }
+
+            override fun onCancelled(error: DatabaseError) {
+                // Failed to read value
+                Log.e(TAG, "Failed to read value.", error.toException())
+            }
+        })
+
+
         val storage = FirebaseStorage.getInstance()
         addProfileImage = findViewById<ImageView>(R.id.addProfileImage)
         val storageReference: StorageReference = storage.reference
@@ -52,6 +79,7 @@ class MainActivity : AppCompatActivity() {
                 Intent(Intent.ACTION_PICK, MediaStore.Images.Media.EXTERNAL_CONTENT_URI)
             startActivityForResult(galleryIntent, PICK_FROM_GALLARY)
         }
+
     }
 
     override fun onActivityResult(requestCode: Int, resultCode: Int, data: Intent?) {
@@ -77,8 +105,6 @@ class MainActivity : AppCompatActivity() {
             }
         }
     }
-
-
 
     fun dialogBoxwithEdittext(title:String, message:String) :String {
         val alert: AlertDialog.Builder = AlertDialog.Builder(this)
