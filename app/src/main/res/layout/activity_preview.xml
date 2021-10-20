@@ -61,9 +61,10 @@
 
                 <ImageButton
                     android:id="@+id/addFacebookButton"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:src="@drawable/my_button"
+                    android:layout_width="38dp"
+                    android:layout_height="38dp"
+                    android:src="@drawable/ic_facebook"
+                    android:background="@color/white"
                     app:layout_constraintEnd_toStartOf="@+id/addInstagramButton"
                     app:layout_constraintHorizontal_bias="0.5"
                     app:layout_constraintTop_toTopOf="parent"
@@ -79,9 +80,10 @@
 
                 <ImageButton
                     android:id="@+id/addInstagramButton"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:src="@drawable/my_button"
+                    android:layout_width="38dp"
+                    android:layout_height="38dp"
+                    android:src="@drawable/ic_instagram"
+                    android:background="@color/white"
                     app:layout_constraintEnd_toStartOf="@+id/addLinkedinButton"
                     app:layout_constraintHorizontal_bias="0.5"
                     app:layout_constraintTop_toTopOf="parent"
