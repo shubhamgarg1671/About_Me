@@ -9,7 +9,8 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/Theme.AboutMe">
-        <activity android:name=".EnterPhoneNumber"></activity>
+        <activity android:name=".previewActivity"></activity>
+        <activity android:name=".EnterPhoneNumber" />
         <activity
             android:name=".Welcome"
             android:exported="true">
