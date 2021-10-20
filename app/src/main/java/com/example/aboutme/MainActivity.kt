@@ -14,10 +14,7 @@ import android.widget.Toast
 import androidx.appcompat.app.AlertDialog
 import androidx.appcompat.app.AppCompatActivity
 import com.google.firebase.auth.FirebaseAuth
-import com.google.firebase.database.DataSnapshot
-import com.google.firebase.database.DatabaseError
-import com.google.firebase.database.FirebaseDatabase
-import com.google.firebase.database.ValueEventListener
+import com.google.firebase.database.*
 import com.google.firebase.database.ktx.getValue
 import com.google.firebase.storage.FirebaseStorage
 import com.google.firebase.storage.StorageReference
@@ -30,16 +27,18 @@ class MainActivity : AppCompatActivity() {
     lateinit var addProfileImage:ImageView
     lateinit var profileName:TextView
     lateinit var bio_text:TextView
-    var temporaryString:String = ""
+    lateinit var myRef:DatabaseReference
+    lateinit var database:FirebaseDatabase
+    lateinit var uid:String
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_main)
         val auth = FirebaseAuth.getInstance()
-        val uid:String = auth.uid!!
-        val database = FirebaseDatabase.getInstance()
+        uid = auth.uid!!
+        database = FirebaseDatabase.getInstance()
         profileName = findViewById(R.id.profileName)
         bio_text = findViewById(R.id.bio_text)
-        var myRef = database.getReference("user/$uid")
+        myRef = database.getReference("user/$uid")
         myRef.addValueEventListener(object : ValueEventListener {
             override fun onDataChange(dataSnapshot: DataSnapshot) {
                 // This method is called once with the initial value and again
@@ -81,27 +80,19 @@ class MainActivity : AppCompatActivity() {
         }
         val addFacebookButton:ImageView = findViewById(R.id.addFacebookButton)
         addFacebookButton.setOnClickListener {
-            dialogBoxwithEdittext("Facebook", "Add Profile Link")
-            myRef = database.getReference("user/$uid/facebookLink")
-            myRef.setValue(temporaryString)
+            dialogBoxwithEdittext("Facebook")
         }
         val addInstagramButton:ImageView = findViewById(R.id.addInstagramButton)
         addInstagramButton.setOnClickListener {
-            dialogBoxwithEdittext("Instagram", "Add Profile Link")
-            myRef = database.getReference("user/$uid/instagramLink")
-            myRef.setValue(temporaryString)
+            dialogBoxwithEdittext("Instagram")
         }
         val addLinkedinButton:ImageView = findViewById(R.id.addLinkedinButton)
         addLinkedinButton.setOnClickListener {
-            dialogBoxwithEdittext("Linkedin", "Add Profile Link")
-            myRef = database.getReference("user/$uid/linkedinLink")
-            myRef.setValue(temporaryString)
+            dialogBoxwithEdittext("Linkedin")
         }
         val addMoreProfileButton:ImageView = findViewById(R.id.addMoreProfileButton)
         addMoreProfileButton.setOnClickListener {
-            dialogBoxwithEdittext("Facebook", "Add Profile Link")
-            myRef = database.getReference("user/$uid/moreProfileLink")
-            myRef.setValue(temporaryString)
+            dialogBoxwithEdittext("Facebook")
         }
     }
 
@@ -129,25 +120,27 @@ class MainActivity : AppCompatActivity() {
         }
     }
 
-    fun dialogBoxwithEdittext(title:String, message:String) {
+    fun dialogBoxwithEdittext(title:String) {
         val alert: AlertDialog.Builder = AlertDialog.Builder(this)
 
         val edittext = EditText(this)
-        alert.setMessage(message)
+        alert.setMessage("Add Profile Link")
         alert.setTitle(title)
 
         alert.setCancelable(false)
         alert.setView(edittext)
 
-        alert.setPositiveButton("Ok",
-            DialogInterface.OnClickListener { dialog, whichButton -> //What ever you want to do with the value
-                temporaryString = edittext.text.toString()
-            })
+        alert.setPositiveButton("Ok"
+        ) { dialog, whichButton -> //What ever you want to do with the value
+            val temporaryString = edittext.text.toString()
+            myRef = database.getReference("user/$uid/${title.lowercase()}Link")
+            myRef.setValue(temporaryString)
+        }
 
-        alert.setNegativeButton("Cancel",
-            DialogInterface.OnClickListener { dialog, whichButton ->
-                // what ever you want to do with No option.
-            })
+        alert.setNegativeButton("Cancel"
+        ) { dialog, whichButton ->
+            // what ever you want to do with No option.
+        }
 
         alert.show()
     }
