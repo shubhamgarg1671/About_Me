@@ -7,10 +7,7 @@ import android.net.Uri
 import android.os.Bundle
 import android.provider.MediaStore
 import android.util.Log
-import android.widget.EditText
-import android.widget.ImageView
-import android.widget.TextView
-import android.widget.Toast
+import android.widget.*
 import androidx.appcompat.app.AlertDialog
 import androidx.appcompat.app.AppCompatActivity
 import com.google.firebase.auth.FirebaseAuth
@@ -80,19 +77,48 @@ class MainActivity : AppCompatActivity() {
         }
         val addFacebookButton:ImageView = findViewById(R.id.addFacebookButton)
         addFacebookButton.setOnClickListener {
-            dialogBoxwithEdittext("Facebook")
+            dialogBoxwithEdittext("Facebook","Add Profile Link")
         }
         val addInstagramButton:ImageView = findViewById(R.id.addInstagramButton)
         addInstagramButton.setOnClickListener {
-            dialogBoxwithEdittext("Instagram")
+            dialogBoxwithEdittext("Instagram","Add Profile Link")
         }
         val addLinkedinButton:ImageView = findViewById(R.id.addLinkedinButton)
         addLinkedinButton.setOnClickListener {
-            dialogBoxwithEdittext("Linkedin")
+            dialogBoxwithEdittext("Linkedin","Add Profile Link")
         }
         val addMoreProfileButton:ImageView = findViewById(R.id.addMoreProfileButton)
         addMoreProfileButton.setOnClickListener {
-            dialogBoxwithEdittext("Facebook")
+            dialogBoxwithEdittext("Others","Add Profile Link")
+        }
+        val addEmailButton:ImageView = findViewById(R.id.addEmailButton)
+        addEmailButton.setOnClickListener {
+            dialogBoxwithEdittext("Email","Enter Email address")
+        }
+        val addAddressButton:ImageView = findViewById(R.id.addAddressButton)
+        addAddressButton.setOnClickListener {
+            dialogBoxwithEdittext("Address","Enter address")
+        }
+        val addPhoneButton:ImageView = findViewById(R.id.addPhoneButton)
+        addPhoneButton.setOnClickListener {
+            dialogBoxwithEdittext("Phone Number","Enter Phone Number")
+        }
+        val addWebsiteButton:ImageView = findViewById(R.id.addWebsiteButton)
+        addWebsiteButton.setOnClickListener {
+            dialogBoxwithEdittext("Website","Enter Website link")
+        }
+
+        val publishButton: Button = findViewById(R.id.publishButton)
+        publishButton.setOnClickListener {
+            val yourLink:String = findViewById<EditText>(R.id.yourLink).text.toString()
+            myRef = database.getReference("user/$uid/yourLink")
+            myRef.setValue(yourLink)
+            val linkTitle:String = findViewById<EditText>(R.id.linkTitle).text.toString()
+            myRef = database.getReference("user/$uid/linkTitle")
+            myRef.setValue(linkTitle)
+            val linkDescription:String = findViewById<EditText>(R.id.linkDescription).text.toString()
+            myRef = database.getReference("user/$uid/linkDescription")
+            myRef.setValue(linkDescription)
         }
     }
 
@@ -120,11 +146,11 @@ class MainActivity : AppCompatActivity() {
         }
     }
 
-    fun dialogBoxwithEdittext(title:String) {
+    fun dialogBoxwithEdittext(title:String, message:String) {
         val alert: AlertDialog.Builder = AlertDialog.Builder(this)
 
         val edittext = EditText(this)
-        alert.setMessage("Add Profile Link")
+        alert.setMessage(message)
         alert.setTitle(title)
 
         alert.setCancelable(false)
@@ -133,7 +159,7 @@ class MainActivity : AppCompatActivity() {
         alert.setPositiveButton("Ok"
         ) { dialog, whichButton -> //What ever you want to do with the value
             val temporaryString = edittext.text.toString()
-            myRef = database.getReference("user/$uid/${title.lowercase()}Link")
+            myRef = database.getReference("user/$uid/${title.lowercase()}")
             myRef.setValue(temporaryString)
         }
 
