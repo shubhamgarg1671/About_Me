@@ -79,7 +79,30 @@ class MainActivity : AppCompatActivity() {
                 Intent(Intent.ACTION_PICK, MediaStore.Images.Media.EXTERNAL_CONTENT_URI)
             startActivityForResult(galleryIntent, PICK_FROM_GALLARY)
         }
-
+        val addFacebookButton:ImageView = findViewById(R.id.addFacebookButton)
+        addFacebookButton.setOnClickListener {
+            dialogBoxwithEdittext("Facebook", "Add Profile Link")
+            myRef = database.getReference("user/$uid/facebookLink")
+            myRef.setValue(temporaryString)
+        }
+        val addInstagramButton:ImageView = findViewById(R.id.addInstagramButton)
+        addInstagramButton.setOnClickListener {
+            dialogBoxwithEdittext("Instagram", "Add Profile Link")
+            myRef = database.getReference("user/$uid/instagramLink")
+            myRef.setValue(temporaryString)
+        }
+        val addLinkedinButton:ImageView = findViewById(R.id.addLinkedinButton)
+        addLinkedinButton.setOnClickListener {
+            dialogBoxwithEdittext("Linkedin", "Add Profile Link")
+            myRef = database.getReference("user/$uid/linkedinLink")
+            myRef.setValue(temporaryString)
+        }
+        val addMoreProfileButton:ImageView = findViewById(R.id.addMoreProfileButton)
+        addMoreProfileButton.setOnClickListener {
+            dialogBoxwithEdittext("Facebook", "Add Profile Link")
+            myRef = database.getReference("user/$uid/moreProfileLink")
+            myRef.setValue(temporaryString)
+        }
     }
 
     override fun onActivityResult(requestCode: Int, resultCode: Int, data: Intent?) {
@@ -106,7 +129,7 @@ class MainActivity : AppCompatActivity() {
         }
     }
 
-    fun dialogBoxwithEdittext(title:String, message:String) :String {
+    fun dialogBoxwithEdittext(title:String, message:String) {
         val alert: AlertDialog.Builder = AlertDialog.Builder(this)
 
         val edittext = EditText(this)
@@ -127,6 +150,5 @@ class MainActivity : AppCompatActivity() {
             })
 
         alert.show()
-        return "de"
     }
 }

@@ -70,42 +70,45 @@
         android:background="@drawable/card_view_border"
         app:layout_constraintTop_toBottomOf="@+id/add_to_bio">
 
-        <Button
+        <ImageButton
             android:id="@+id/addFacebookButton"
             android:layout_width="wrap_content"
             android:layout_height="match_parent"
             android:text="fb"
+            android:src="@drawable/my_button"
             app:layout_constraintEnd_toStartOf="@+id/addInstagramButton"
             app:layout_constraintHorizontal_bias="0.5"
             app:layout_constraintStart_toStartOf="parent" />
 
-        <Button
+        <ImageButton
             android:id="@+id/addInstagramButton"
             android:layout_width="wrap_content"
             android:layout_height="match_parent"
             android:text="insta"
+            android:src="@drawable/my_button"
             app:layout_constraintEnd_toStartOf="@+id/addLinkedinButton"
             app:layout_constraintHorizontal_bias="0.5"
             app:layout_constraintStart_toEndOf="@+id/addFacebookButton" />
 
-        <Button
+        <ImageButton
             android:id="@+id/addLinkedinButton"
             android:layout_width="wrap_content"
             android:layout_height="match_parent"
             android:text="link"
+            android:src="@drawable/my_button"
             app:layout_constraintEnd_toStartOf="@+id/addMoreProfileButton"
             app:layout_constraintHorizontal_bias="0.5"
             app:layout_constraintStart_toEndOf="@+id/addInstagramButton" />
 
-        <Button
+        <ImageButton
             android:id="@+id/addMoreProfileButton"
             android:layout_width="wrap_content"
             android:layout_height="match_parent"
             android:text="+"
+            android:src="@drawable/my_button"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintHorizontal_bias="0.5"
             app:layout_constraintStart_toEndOf="@+id/addLinkedinButton" />
-
 
     </androidx.constraintlayout.widget.ConstraintLayout>
     <androidx.constraintlayout.widget.ConstraintLayout
