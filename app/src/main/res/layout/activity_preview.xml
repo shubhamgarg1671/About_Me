@@ -61,8 +61,8 @@
 
                 <ImageButton
                     android:id="@+id/addFacebookButton"
-                    android:layout_width="38dp"
-                    android:layout_height="38dp"
+                    android:layout_width="60dp"
+                    android:layout_height="60dp"
                     android:src="@drawable/ic_facebook"
                     android:background="@color/white"
                     app:layout_constraintEnd_toStartOf="@+id/addInstagramButton"
@@ -70,18 +70,10 @@
                     app:layout_constraintTop_toTopOf="parent"
                     app:layout_constraintStart_toStartOf="parent" />
 
-                <TextView
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:text="Facebook "
-                    app:layout_constraintBottom_toBottomOf="parent"
-                    app:layout_constraintLeft_toLeftOf="@+id/addFacebookButton"
-                    app:layout_constraintRight_toRightOf="@+id/addFacebookButton"/>
-
                 <ImageButton
                     android:id="@+id/addInstagramButton"
-                    android:layout_width="38dp"
-                    android:layout_height="38dp"
+                    android:layout_width="60dp"
+                    android:layout_height="60dp"
                     android:src="@drawable/ic_instagram"
                     android:background="@color/white"
                     app:layout_constraintEnd_toStartOf="@+id/addLinkedinButton"
@@ -89,18 +81,10 @@
                     app:layout_constraintTop_toTopOf="parent"
                     app:layout_constraintStart_toEndOf="@+id/addFacebookButton" />
 
-                <TextView
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:text=" Instagram "
-                    app:layout_constraintBottom_toBottomOf="parent"
-                    app:layout_constraintLeft_toLeftOf="@+id/addInstagramButton"
-                    app:layout_constraintRight_toRightOf="@+id/addInstagramButton"/>
-
                 <ImageButton
                     android:id="@+id/addLinkedinButton"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
+                    android:layout_width="60dp"
+                    android:layout_height="60dp"
                     android:src="@drawable/ic_linkedin_icon"
                     android:background="@color/white"
                     app:layout_constraintEnd_toStartOf="@+id/addMoreProfileButton"
@@ -108,31 +92,16 @@
                     app:layout_constraintTop_toTopOf="parent"
                     app:layout_constraintStart_toEndOf="@+id/addInstagramButton" />
 
-                <TextView
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:text=" Linkedin "
-                    app:layout_constraintRight_toRightOf="@+id/addLinkedinButton"
-                    app:layout_constraintLeft_toLeftOf="@+id/addLinkedinButton"
-                    app:layout_constraintTop_toBottomOf="@+id/addLinkedinButton"
-                    app:layout_constraintBottom_toBottomOf="parent"/>
                 <ImageButton
                     android:id="@+id/addMoreProfileButton"
-                    android:layout_width="wrap_content"
-                    android:layout_height="match_parent"
-                    android:src="@drawable/ic_addmoreicon"
+                    android:layout_height="60dp"
+                    android:layout_width="60dp"
+                    android:src="@drawable/ic_twitter"
                     android:background="@color/white"
                     app:layout_constraintEnd_toEndOf="parent"
                     app:layout_constraintHorizontal_bias="0.5"
+                    app:layout_constraintTop_toTopOf="parent"
                     app:layout_constraintStart_toEndOf="@+id/addLinkedinButton" />
-                <TextView
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:text=" Add Other"
-                    app:layout_constraintTop_toBottomOf="@+id/addMoreProfileButton"
-                    app:layout_constraintLeft_toLeftOf="@+id/addMoreProfileButton"
-                    app:layout_constraintRight_toRightOf="@+id/addMoreProfileButton"
-                    app:layout_constraintBottom_toBottomOf="parent" />
 
             </androidx.constraintlayout.widget.ConstraintLayout>
             <TextView
@@ -147,82 +116,53 @@
             <androidx.constraintlayout.widget.ConstraintLayout
                 android:id="@+id/contactDetails"
                 android:layout_width="match_parent"
-                android:layout_height="wrap_content"
+                android:layout_height="30dp"
                 android:layout_margin="24dp"
                 app:layout_constraintTop_toBottomOf="@+id/socialLinks">
 
                 <ImageButton
                     android:id="@+id/addEmailButton"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
+                    android:layout_width="25dp"
+                    android:layout_height="25dp"
                     android:background="@color/white"
                     android:src="@drawable/ic_baseline_email_24"
                     app:layout_constraintEnd_toStartOf="@+id/addAddressButton"
                     app:layout_constraintHorizontal_bias="0.5"
                     app:layout_constraintTop_toTopOf="parent"
                     app:layout_constraintStart_toStartOf="parent" />
-                <TextView
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:text="E-mail "
-                    app:layout_constraintBottom_toBottomOf="parent"
-                    app:layout_constraintTop_toBottomOf="@+id/addEmailButton"
-                    app:layout_constraintLeft_toLeftOf="@+id/addEmailButton"
-                    app:layout_constraintRight_toRightOf="@+id/addEmailButton"/>
 
                 <ImageButton
                     android:id="@+id/addAddressButton"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
+                    android:layout_width="25dp"
+                    android:layout_height="25dp"
                     android:background="@color/white"
                     android:src="@drawable/ic_baseline_call_24"
                     app:layout_constraintEnd_toStartOf="@+id/addPhoneButton"
                     app:layout_constraintTop_toTopOf="parent"
                     app:layout_constraintHorizontal_bias="0.5"
                     app:layout_constraintStart_toEndOf="@+id/addEmailButton" />
-                <TextView
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:text=" Address "
-                    app:layout_constraintBottom_toBottomOf="parent"
-                    app:layout_constraintLeft_toLeftOf="@+id/addAddressButton"
-                    app:layout_constraintRight_toRightOf="@+id/addAddressButton"/>
 
                 <ImageButton
                     android:id="@+id/addPhoneButton"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
+                    android:layout_width="25dp"
+                    android:layout_height="25dp"
                     android:background="@color/white"
                     android:src="@drawable/ic_baseline_perm_contact_calendar_24"
                     app:layout_constraintEnd_toStartOf="@+id/addWebsiteButton"
                     app:layout_constraintHorizontal_bias="0.5"
                     app:layout_constraintTop_toTopOf="parent"
                     app:layout_constraintStart_toEndOf="@+id/addAddressButton" />
-                <TextView
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:text=" Phone "
-                    app:layout_constraintBottom_toBottomOf="parent"
-                    app:layout_constraintLeft_toLeftOf="@+id/addPhoneButton"
-                    app:layout_constraintRight_toRightOf="@+id/addPhoneButton"/>
 
                 <ImageButton
                     android:id="@+id/addWebsiteButton"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
+                    android:layout_width="25dp"
+                    android:layout_height="25dp"
                     android:background="@color/white"
                     android:src="@drawable/ic_baseline_blur_circular_24"
                     app:layout_constraintEnd_toEndOf="parent"
                     app:layout_constraintHorizontal_bias="0.5"
                     app:layout_constraintStart_toEndOf="@+id/addPhoneButton"
                     app:layout_constraintTop_toTopOf="parent" />
-                <TextView
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:text=" Website "
-                    app:layout_constraintBottom_toBottomOf="parent"
-                    app:layout_constraintLeft_toLeftOf="@+id/addWebsiteButton"
-                    app:layout_constraintRight_toRightOf="@+id/addWebsiteButton"/>
 
             </androidx.constraintlayout.widget.ConstraintLayout>
         </androidx.constraintlayout.widget.ConstraintLayout>

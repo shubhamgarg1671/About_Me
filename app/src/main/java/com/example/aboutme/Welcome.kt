@@ -17,7 +17,7 @@ class Welcome : AppCompatActivity() {
         auth = FirebaseAuth.getInstance()
         val getStartedButton: Button = findViewById(R.id.getStartedButton);
         getStartedButton.setOnClickListener {
-            val intent = Intent(this, EnterPhoneNumber::class.java)
+            val intent = Intent(this, previewActivity::class.java)
             startActivity(intent)
         }
     }
@@ -30,7 +30,7 @@ class Welcome : AppCompatActivity() {
         }
     }
     fun afterLogIn(currentUser: FirebaseUser) {
-        val intent = Intent(this, MainActivity::class.java)
+        val intent = Intent(this, previewActivity::class.java)
         startActivity(intent)
         finish()
     }
