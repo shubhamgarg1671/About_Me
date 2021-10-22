@@ -119,6 +119,8 @@ class MainActivity : AppCompatActivity() {
             val linkDescription:String = findViewById<EditText>(R.id.linkDescription).text.toString()
             myRef = database.getReference("user/$uid/linkDescription")
             myRef.setValue(linkDescription)
+            val intent = Intent(this, previewActivity::class.java)
+            startActivity(intent)
         }
     }
 
