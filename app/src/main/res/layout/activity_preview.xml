@@ -60,40 +60,40 @@
                 app:layout_constraintTop_toBottomOf="@+id/bio_text2">
 
                 <ImageButton
-                    android:id="@+id/addFacebookButton"
+                    android:id="@+id/facebookButton"
                     android:layout_width="60dp"
                     android:layout_height="60dp"
                     android:src="@drawable/ic_facebook"
                     android:background="@color/white"
-                    app:layout_constraintEnd_toStartOf="@+id/addInstagramButton"
+                    app:layout_constraintEnd_toStartOf="@+id/instagramButton"
                     app:layout_constraintHorizontal_bias="0.5"
                     app:layout_constraintTop_toTopOf="parent"
                     app:layout_constraintStart_toStartOf="parent" />
 
                 <ImageButton
-                    android:id="@+id/addInstagramButton"
+                    android:id="@+id/instagramButton"
                     android:layout_width="60dp"
                     android:layout_height="60dp"
                     android:src="@drawable/ic_instagram"
                     android:background="@color/white"
-                    app:layout_constraintEnd_toStartOf="@+id/addLinkedinButton"
+                    app:layout_constraintEnd_toStartOf="@+id/linkedinButton"
                     app:layout_constraintHorizontal_bias="0.5"
                     app:layout_constraintTop_toTopOf="parent"
-                    app:layout_constraintStart_toEndOf="@+id/addFacebookButton" />
+                    app:layout_constraintStart_toEndOf="@+id/facebookButton" />
 
                 <ImageButton
-                    android:id="@+id/addLinkedinButton"
+                    android:id="@+id/linkedinButton"
                     android:layout_width="60dp"
                     android:layout_height="60dp"
                     android:src="@drawable/ic_linkedin_icon"
                     android:background="@color/white"
-                    app:layout_constraintEnd_toStartOf="@+id/addMoreProfileButton"
+                    app:layout_constraintEnd_toStartOf="@+id/moreProfileButton"
                     app:layout_constraintHorizontal_bias="0.5"
                     app:layout_constraintTop_toTopOf="parent"
-                    app:layout_constraintStart_toEndOf="@+id/addInstagramButton" />
+                    app:layout_constraintStart_toEndOf="@+id/instagramButton" />
 
                 <ImageButton
-                    android:id="@+id/addMoreProfileButton"
+                    android:id="@+id/moreProfileButton"
                     android:layout_height="60dp"
                     android:layout_width="60dp"
                     android:src="@drawable/ic_twitter"
@@ -101,7 +101,7 @@
                     app:layout_constraintEnd_toEndOf="parent"
                     app:layout_constraintHorizontal_bias="0.5"
                     app:layout_constraintTop_toTopOf="parent"
-                    app:layout_constraintStart_toEndOf="@+id/addLinkedinButton" />
+                    app:layout_constraintStart_toEndOf="@+id/linkedinButton" />
 
             </androidx.constraintlayout.widget.ConstraintLayout>
             <TextView
@@ -121,47 +121,47 @@
                 app:layout_constraintTop_toBottomOf="@+id/socialLinks">
 
                 <ImageButton
-                    android:id="@+id/addEmailButton"
+                    android:id="@+id/emailButton"
                     android:layout_width="25dp"
                     android:layout_height="25dp"
                     android:background="@color/white"
                     android:src="@drawable/ic_baseline_email_24"
-                    app:layout_constraintEnd_toStartOf="@+id/addAddressButton"
+                    app:layout_constraintEnd_toStartOf="@+id/phoneButton"
                     app:layout_constraintHorizontal_bias="0.5"
                     app:layout_constraintTop_toTopOf="parent"
                     app:layout_constraintStart_toStartOf="parent" />
 
                 <ImageButton
-                    android:id="@+id/addAddressButton"
+                    android:id="@+id/phoneButton"
                     android:layout_width="25dp"
                     android:layout_height="25dp"
                     android:background="@color/white"
                     android:src="@drawable/ic_baseline_call_24"
-                    app:layout_constraintEnd_toStartOf="@+id/addPhoneButton"
+                    app:layout_constraintEnd_toStartOf="@+id/addressButton"
                     app:layout_constraintTop_toTopOf="parent"
                     app:layout_constraintHorizontal_bias="0.5"
-                    app:layout_constraintStart_toEndOf="@+id/addEmailButton" />
+                    app:layout_constraintStart_toEndOf="@+id/emailButton" />
 
                 <ImageButton
-                    android:id="@+id/addPhoneButton"
+                    android:id="@+id/addressButton"
                     android:layout_width="25dp"
                     android:layout_height="25dp"
                     android:background="@color/white"
                     android:src="@drawable/ic_baseline_perm_contact_calendar_24"
-                    app:layout_constraintEnd_toStartOf="@+id/addWebsiteButton"
+                    app:layout_constraintEnd_toStartOf="@+id/websiteButton"
                     app:layout_constraintHorizontal_bias="0.5"
                     app:layout_constraintTop_toTopOf="parent"
-                    app:layout_constraintStart_toEndOf="@+id/addAddressButton" />
+                    app:layout_constraintStart_toEndOf="@+id/phoneButton" />
 
                 <ImageButton
-                    android:id="@+id/addWebsiteButton"
+                    android:id="@+id/websiteButton"
                     android:layout_width="25dp"
                     android:layout_height="25dp"
                     android:background="@color/white"
                     android:src="@drawable/ic_baseline_blur_circular_24"
                     app:layout_constraintEnd_toEndOf="parent"
                     app:layout_constraintHorizontal_bias="0.5"
-                    app:layout_constraintStart_toEndOf="@+id/addPhoneButton"
+                    app:layout_constraintStart_toEndOf="@+id/addressButton"
                     app:layout_constraintTop_toTopOf="parent" />
 
             </androidx.constraintlayout.widget.ConstraintLayout>
