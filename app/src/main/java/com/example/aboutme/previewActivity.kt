@@ -1,16 +1,21 @@
 package com.example.aboutme
 
 import android.content.Intent
+import android.graphics.BitmapFactory
 import android.net.Uri
 import android.os.Bundle
 import android.util.Log
 import android.widget.ImageButton
+import android.widget.ImageView
+import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
 import com.google.firebase.auth.FirebaseAuth
 import com.google.firebase.database.DataSnapshot
 import com.google.firebase.database.DatabaseError
 import com.google.firebase.database.FirebaseDatabase
 import com.google.firebase.database.ValueEventListener
+import com.google.firebase.storage.FirebaseStorage
+import com.google.firebase.storage.StorageReference
 
 class previewActivity : AppCompatActivity() {
     val TAG = "previewActivity"
@@ -18,7 +23,7 @@ class previewActivity : AppCompatActivity() {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_preview)
         val uid = FirebaseAuth.getInstance().uid!!
-        val storage = FirebaseDatabase.getInstance()
+        val database = FirebaseDatabase.getInstance()
         var facebookLink:String = ""
         var instagramLink:String = ""
         var linkedinLink:String = ""
@@ -28,7 +33,7 @@ class previewActivity : AppCompatActivity() {
         var phoneNumber:String = ""
         var website:String = ""
 
-        val myRef = storage.getReference("user/$uid")
+        val myRef = database.getReference("user/$uid")
         myRef.addValueEventListener(object : ValueEventListener {
             override fun onDataChange(dataSnapshot: DataSnapshot) {
                 // This method is called once with the initial value and again
@@ -89,6 +94,22 @@ class previewActivity : AppCompatActivity() {
         val websiteButton:ImageButton = findViewById(R.id.websiteButton)
         websiteButton.setOnClickListener { redirecttoURL(website) }
 
+        val storage = FirebaseStorage.getInstance()
+        val profileImage = findViewById<ImageView>(R.id.profileImage)
+        val storageReference: StorageReference = storage.reference
+        val photoReference: StorageReference = storageReference.child("image/$uid/profilePicture")
+        val ONE_MEGABYTE = (1024 * 1024 * 5).toLong()
+        photoReference.getBytes(ONE_MEGABYTE).addOnSuccessListener { bytes ->
+            val bmp = BitmapFactory.decodeByteArray(bytes, 0, bytes.size)
+            profileImage.setImageBitmap(bmp)
+        }.addOnFailureListener {
+            Log.e(TAG, "onCreate() called ${it.message}")
+            Toast.makeText(
+                applicationContext,
+                "No Such file or Path found!!",
+                Toast.LENGTH_LONG
+            ).show()
+        }
     }
     fun redirecttoURL(url:String) {
         val httpIntent = Intent(Intent.ACTION_VIEW)
