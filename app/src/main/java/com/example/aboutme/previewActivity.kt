@@ -7,6 +7,7 @@ import android.os.Bundle
 import android.util.Log
 import android.widget.ImageButton
 import android.widget.ImageView
+import android.widget.TextView
 import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
 import com.google.firebase.auth.FirebaseAuth
@@ -32,7 +33,8 @@ class previewActivity : AppCompatActivity() {
         var Address:String = ""
         var phoneNumber:String = ""
         var website:String = ""
-
+        val profileName2:TextView = findViewById(R.id.profileName2)
+        val bio_text2:TextView = findViewById(R.id.bio_text2)
         val myRef = database.getReference("user/$uid")
         myRef.addValueEventListener(object : ValueEventListener {
             override fun onDataChange(dataSnapshot: DataSnapshot) {
@@ -49,6 +51,9 @@ class previewActivity : AppCompatActivity() {
                 Address = dataSnapshot.child("address").getValue().toString()
                 phoneNumber = dataSnapshot.child("phone number").getValue().toString()
                 website = dataSnapshot.child("website").getValue().toString()
+
+                profileName2.setText(dataSnapshot.child("profileName").getValue().toString())
+                bio_text2.setText(dataSnapshot.child("bio").getValue().toString())
             }
 
             override fun onCancelled(error: DatabaseError) {
