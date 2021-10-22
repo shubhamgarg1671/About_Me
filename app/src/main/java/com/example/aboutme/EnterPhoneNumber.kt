@@ -159,7 +159,7 @@ class EnterPhoneNumber : AppCompatActivity() {
     }
     fun afterLogIn(currentUser: FirebaseUser) {
         Log.d(TAG, "afterLogIn() called with: currentUser = $currentUser")
-        val intent = Intent(this, MainActivity::class.java)
+        val intent = Intent(this, LoginActivity::class.java)
         startActivity(intent)
         this.finishAffinity()
     }

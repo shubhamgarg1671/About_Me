@@ -56,14 +56,7 @@ class LoginActivity : AppCompatActivity() {
             }.addOnSuccessListener { taskSnapshot ->
                 // taskSnapshot.metadata contains file metadata such as size, content-type, etc.
                 // ...
-                imagesRef.downloadUrl.addOnCompleteListener { task ->
-                        val profileImageUrl = task.result.toString()
-                    myref = database.getReference("user/${auth.uid}/profileImage")
-                    myref.setValue(profileImageUrl)
-                }
-                .addOnFailureListener { e ->
-                    Log.e(TAG, "onCreate() called with: e = $e")
-                }
+                    Log.d(TAG, "onCreate() called with: taskSnapshot = $taskSnapshot")
             }
             val username:String = findViewById<EditText>(R.id.username_edittext).text.toString()
             myref = database.getReference("user/${auth.uid}/username")
