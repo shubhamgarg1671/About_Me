@@ -67,6 +67,9 @@ class LoginActivity : AppCompatActivity() {
             val bio:String = findViewById<EditText>(R.id.bio_edittext).text.toString()
             myref = database.getReference("user/${auth.uid}/bio")
             myref.setValue(bio)
+            val intent = Intent(this, MainActivity::class.java)
+            startActivity(intent)
+
         }
         addProfileImage.setOnClickListener {
             val galleryIntent =
