@@ -17,9 +17,13 @@ import com.google.firebase.database.FirebaseDatabase
 import com.google.firebase.database.ValueEventListener
 import com.google.firebase.storage.FirebaseStorage
 import com.google.firebase.storage.StorageReference
+import io.github.ponnamkarthik.richlinkpreview.RichLinkView
+import io.github.ponnamkarthik.richlinkpreview.ViewListener
+
 
 class previewActivity : AppCompatActivity() {
     val TAG = "previewActivity"
+    lateinit var richLinkView:RichLinkView
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_preview)
@@ -115,6 +119,15 @@ class previewActivity : AppCompatActivity() {
                 Toast.LENGTH_LONG
             ).show()
         }
+        richLinkView = findViewById<RichLinkView>(R.id.richLinkView)
+        richLinkView.setLink("https://stackoverflow.com", object : ViewListener {
+            override fun onSuccess(status: Boolean) {
+                Log.d(TAG, "onSuccess() called with: status = $status")
+            }
+            override fun onError(e: Exception) {
+                Log.e(TAG, "onError() called with: e = $e")
+            }
+        })
     }
     fun redirecttoURL(url:String) {
         val httpIntent = Intent(Intent.ACTION_VIEW)
