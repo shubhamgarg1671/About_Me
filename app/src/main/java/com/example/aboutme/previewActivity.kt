@@ -20,7 +20,6 @@ import com.google.firebase.storage.StorageReference
 import io.github.ponnamkarthik.richlinkpreview.RichLinkView
 import io.github.ponnamkarthik.richlinkpreview.ViewListener
 
-
 class previewActivity : AppCompatActivity() {
     val TAG = "previewActivity"
     lateinit var richLinkView:RichLinkView
