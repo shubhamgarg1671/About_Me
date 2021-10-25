@@ -12,6 +12,15 @@
         <androidx.constraintlayout.widget.ConstraintLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content">
+            <ImageButton
+                android:id="@+id/backButtonPreview"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_margin="24dp"
+                android:src="@drawable/ic_baseline_keyboard_backspace_24"
+                android:background="@color/white"
+                app:layout_constraintTop_toTopOf="parent"
+                app:layout_constraintLeft_toLeftOf="parent"/>
             <ImageView
                 android:id="@+id/profileImage"
                 android:layout_width="150dp"

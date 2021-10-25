@@ -21,7 +21,6 @@ import com.google.firebase.database.FirebaseDatabase
 import com.google.firebase.database.ValueEventListener
 import com.google.firebase.storage.FirebaseStorage
 import com.google.firebase.storage.StorageReference
-import com.kedia.ogparser.OpenGraphParser
 import io.github.ponnamkarthik.richlinkpreview.RichLinkView
 import io.github.ponnamkarthik.richlinkpreview.ViewListener
 
@@ -139,6 +138,11 @@ class previewActivity : AppCompatActivity() {
                 "No Such file or Path found!!",
                 Toast.LENGTH_LONG
             ).show()
+        }
+        val backButtonPreview:ImageButton = findViewById(R.id.backButtonPreview)
+        backButtonPreview.setOnClickListener {
+            val intent = Intent(this, MainActivity::class.java)
+            startActivity(intent)
         }
     }
     fun redirecttoURL(url:String) {
