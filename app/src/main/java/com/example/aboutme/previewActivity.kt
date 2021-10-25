@@ -1,5 +1,9 @@
 package com.example.aboutme
 
+import android.R.attr.label
+import android.content.ClipData
+import android.content.ClipboardManager
+import android.content.Context
 import android.content.Intent
 import android.graphics.BitmapFactory
 import android.net.Uri
@@ -17,8 +21,10 @@ import com.google.firebase.database.FirebaseDatabase
 import com.google.firebase.database.ValueEventListener
 import com.google.firebase.storage.FirebaseStorage
 import com.google.firebase.storage.StorageReference
+import com.kedia.ogparser.OpenGraphParser
 import io.github.ponnamkarthik.richlinkpreview.RichLinkView
 import io.github.ponnamkarthik.richlinkpreview.ViewListener
+
 
 class previewActivity : AppCompatActivity() {
     val TAG = "previewActivity"
@@ -58,6 +64,21 @@ class previewActivity : AppCompatActivity() {
                 yourLink = dataSnapshot.child("yourLink").getValue().toString()
                 profileName2.setText(dataSnapshot.child("profileName").getValue().toString())
                 bio_text2.setText(dataSnapshot.child("bio").getValue().toString())
+//                copyToClipBoard(yourLink)
+//                Log.d(TAG, "yourLink ${yourLink}")
+//                richLinkView = findViewById<RichLinkView>(R.id.richLinkView)
+//        richLinkView.setLink(
+//            yourLink,
+//            object : ViewListener {
+//                override fun onSuccess(status: Boolean) {
+//                    Log.d(TAG, "onSuccess() called with: status = $status")
+//                }
+//
+//                override fun onError(e: Exception) {
+//                    Log.e(TAG, "onError() called with: e = $e")
+//                }
+//            }
+//        )
             }
 
             override fun onCancelled(error: DatabaseError) {
@@ -119,23 +140,17 @@ class previewActivity : AppCompatActivity() {
                 Toast.LENGTH_LONG
             ).show()
         }
-        richLinkView = findViewById<RichLinkView>(R.id.richLinkView)
-        richLinkView.setLink(
-            yourLink,
-            object : ViewListener {
-                override fun onSuccess(status: Boolean) {
-                    Log.d(TAG, "onSuccess() called with: status = $status")
-                }
-
-                override fun onError(e: Exception) {
-                    Log.e(TAG, "onError() called with: e = $e")
-                }
-            }
-        )
     }
     fun redirecttoURL(url:String) {
         val httpIntent = Intent(Intent.ACTION_VIEW)
         httpIntent.data = Uri.parse(url)
         startActivity(httpIntent)
     }
+    private fun copyToClipBoard(str: String) {
+        val clipboard: ClipboardManager =
+            getSystemService(Context.CLIPBOARD_SERVICE) as ClipboardManager
+        val clip = ClipData.newPlainText(label.toString(), str)
+        clipboard.setPrimaryClip(clip)
+    }
+
 }
