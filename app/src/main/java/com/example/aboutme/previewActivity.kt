@@ -36,6 +36,7 @@ class previewActivity : AppCompatActivity() {
         var Address:String = ""
         var phoneNumber:String = ""
         var website:String = ""
+        var yourLink:String = ""
         val profileName2:TextView = findViewById(R.id.profileName2)
         val bio_text2:TextView = findViewById(R.id.bio_text2)
         val myRef = database.getReference("user/$uid")
@@ -54,7 +55,7 @@ class previewActivity : AppCompatActivity() {
                 Address = dataSnapshot.child("address").getValue().toString()
                 phoneNumber = dataSnapshot.child("phone number").getValue().toString()
                 website = dataSnapshot.child("website").getValue().toString()
-
+                yourLink = dataSnapshot.child("yourLink").getValue().toString()
                 profileName2.setText(dataSnapshot.child("profileName").getValue().toString())
                 bio_text2.setText(dataSnapshot.child("bio").getValue().toString())
             }
@@ -119,14 +120,18 @@ class previewActivity : AppCompatActivity() {
             ).show()
         }
         richLinkView = findViewById<RichLinkView>(R.id.richLinkView)
-        richLinkView.setLink("https://stackoverflow.com", object : ViewListener {
-            override fun onSuccess(status: Boolean) {
-                Log.d(TAG, "onSuccess() called with: status = $status")
+        richLinkView.setLink(
+            yourLink,
+            object : ViewListener {
+                override fun onSuccess(status: Boolean) {
+                    Log.d(TAG, "onSuccess() called with: status = $status")
+                }
+
+                override fun onError(e: Exception) {
+                    Log.e(TAG, "onError() called with: e = $e")
+                }
             }
-            override fun onError(e: Exception) {
-                Log.e(TAG, "onError() called with: e = $e")
-            }
-        })
+        )
     }
     fun redirecttoURL(url:String) {
         val httpIntent = Intent(Intent.ACTION_VIEW)
