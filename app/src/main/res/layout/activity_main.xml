@@ -24,6 +24,17 @@
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
 
+            <ImageButton
+                android:id="@+id/previewButton"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:src="@drawable/ic_icon_feather_eye"
+                android:background="@color/white"
+                android:layout_marginLeft="24dp"
+                android:layout_marginTop="18dp"
+                android:layout_marginStart="24dp"
+                app:layout_constraintTop_toTopOf="parent"
+                app:layout_constraintLeft_toLeftOf="parent"/>
     <TextView
         android:id="@+id/profileName"
         android:layout_width="match_parent"
@@ -70,7 +81,8 @@
         android:layout_height="wrap_content"
         android:layout_margin="24dp"
         android:background="@drawable/card_view_border"
-        android:padding="3dp"
+        android:paddingBottom="10dp"
+        android:paddingTop="10dp"
         app:layout_constraintTop_toBottomOf="@+id/add_to_bio">
 
         <ImageButton
@@ -155,7 +167,8 @@
         android:id="@+id/contactDetails"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:padding="2dp"
+        android:paddingTop="7dp"
+        android:paddingBottom="7dp"
         android:layout_margin="24dp"
         android:background="@drawable/card_view_border"
         app:layout_constraintTop_toBottomOf="@+id/socialLinks">
@@ -239,7 +252,7 @@
         android:id="@+id/addLinksCard"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:padding="2dp"
+        android:padding="3dp"
         android:layout_margin="24dp"
         android:background="@drawable/card_view_border"
         app:layout_constraintTop_toBottomOf="@+id/contactDetails">

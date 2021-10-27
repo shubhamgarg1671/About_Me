@@ -122,6 +122,11 @@ class MainActivity : AppCompatActivity() {
             val intent = Intent(this, previewActivity::class.java)
             startActivity(intent)
         }
+        val previewButton:ImageButton = findViewById(R.id.previewButton)
+        previewButton.setOnClickListener {
+            val intent = Intent(this, previewActivity::class.java)
+            startActivity(intent)
+        }
     }
 
     override fun onActivityResult(requestCode: Int, resultCode: Int, data: Intent?) {
