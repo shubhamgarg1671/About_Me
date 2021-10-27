@@ -26,6 +26,7 @@ class LoginActivity : AppCompatActivity() {
     private lateinit var database:FirebaseDatabase
     private lateinit var auth: FirebaseAuth
     lateinit var signInProgress:ProgressBar
+    var imageUploaded:Boolean = false
     val TAG = "logInActivity"
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -41,22 +42,24 @@ class LoginActivity : AppCompatActivity() {
         LoginCompletedButton = findViewById(R.id.LoginCompletedButton)
         LoginCompletedButton.setOnClickListener {
             // Get the data from an ImageView as bytes
-            addProfileImage.isDrawingCacheEnabled = true
-            addProfileImage.buildDrawingCache()
-            val bitmap = (addProfileImage.drawable as BitmapDrawable).bitmap
-            val baos = ByteArrayOutputStream()
-            bitmap.compress(Bitmap.CompressFormat.JPEG, 100, baos)
-            val data = baos.toByteArray()
-            // Points to "images"
-            val imagesRef = storageRef.child("image/${auth.uid}/profilePicture")
-            val uploadTask = imagesRef.putBytes(data)
+            if (imageUploaded) {
+                addProfileImage.isDrawingCacheEnabled = true
+                addProfileImage.buildDrawingCache()
+                val bitmap:Bitmap = (addProfileImage.drawable as BitmapDrawable).bitmap
+                val baos = ByteArrayOutputStream()
+                bitmap.compress(Bitmap.CompressFormat.JPEG, 100, baos)
+                val data = baos.toByteArray()
+                // Points to "images"
+                val imagesRef = storageRef.child("image/${auth.uid}/profilePicture")
+                val uploadTask = imagesRef.putBytes(data)
                 uploadTask.addOnFailureListener {
-                Log.e(TAG, "onCreate() called $it")
-             // Handle unsuccessful uploads
-            }.addOnSuccessListener { taskSnapshot ->
-                // taskSnapshot.metadata contains file metadata such as size, content-type, etc.
-                // ...
+                    Log.e(TAG, "onCreate() called $it")
+                    // Handle unsuccessful uploads
+                }.addOnSuccessListener { taskSnapshot ->
+                    // taskSnapshot.metadata contains file metadata such as size, content-type, etc.
+                    // ...
                     Log.d(TAG, "onCreate() called with: taskSnapshot = $taskSnapshot")
+                }
             }
             val username:String = findViewById<EditText>(R.id.username_edittext).text.toString()
             myref = database.getReference("user/${auth.uid}/username")
@@ -92,6 +95,7 @@ class LoginActivity : AppCompatActivity() {
                     }
                         val selectedImage = BitmapFactory.decodeStream(imageStream)
                     addProfileImage.setImageBitmap(selectedImage)
+                    imageUploaded = true
                 } catch (e: FileNotFoundException) {
                     e.printStackTrace()
                     Toast.makeText(this, "Something went wrong", Toast.LENGTH_LONG).show()
