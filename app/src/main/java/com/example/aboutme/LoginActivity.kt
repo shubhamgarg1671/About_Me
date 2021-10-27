@@ -41,7 +41,7 @@ class LoginActivity : AppCompatActivity() {
         LoginCompletedButton = findViewById(R.id.LoginCompletedButton)
         LoginCompletedButton.setOnClickListener {
             // Get the data from an ImageView as bytes
-            if (imageUploaded) {
+//            if (imageUploaded) {
                 addProfileImage.isDrawingCacheEnabled = true
                 addProfileImage.buildDrawingCache()
                 val bitmap:Bitmap = (addProfileImage.drawable as BitmapDrawable).bitmap
@@ -59,7 +59,7 @@ class LoginActivity : AppCompatActivity() {
                     // ...
                     Log.d(TAG, "onCreate() called with: taskSnapshot = $taskSnapshot")
                 }
-            }
+//            }
             val username:String = findViewById<EditText>(R.id.username_edittext).text.toString()
             myref = database.getReference("user/${auth.uid}/username")
             myref.setValue(username)
