@@ -1,12 +1,13 @@
 package com.example.aboutme
 
-import android.content.DialogInterface
 import android.content.Intent
 import android.graphics.BitmapFactory
 import android.net.Uri
 import android.os.Bundle
 import android.provider.MediaStore
 import android.util.Log
+import android.view.LayoutInflater
+import android.view.View
 import android.widget.*
 import androidx.appcompat.app.AlertDialog
 import androidx.appcompat.app.AppCompatActivity
@@ -17,6 +18,7 @@ import com.google.firebase.storage.FirebaseStorage
 import com.google.firebase.storage.StorageReference
 import java.io.FileNotFoundException
 import java.io.InputStream
+
 
 class MainActivity : AppCompatActivity() {
     val TAG = "MainActivity"
@@ -77,7 +79,22 @@ class MainActivity : AppCompatActivity() {
         }
         val addFacebookButton:ImageView = findViewById(R.id.addFacebookButton)
         addFacebookButton.setOnClickListener {
-            dialogBoxwithEdittext("Facebook","Add Profile Link")
+
+
+            val factory = LayoutInflater.from(this)
+            val deleteDialogView: View = factory.inflate(R.layout.facebook_dialogbox, null)
+            val deleteDialog = AlertDialog.Builder(this).create()
+            deleteDialog.setView(deleteDialogView)
+            deleteDialogView.findViewById<Button>(R.id.dialog_fb).setOnClickListener{
+                val fblink:EditText = deleteDialogView.findViewById<EditText>(R.id.dialog_fb_link)
+                val link:String = fblink.text.toString()
+                Log.d(TAG, "onDialog $link")
+                deleteDialog.cancel()
+            }
+
+            deleteDialog.show()
+
+//            dialogBoxwithEdittext("Facebook","Add Profile Link")
         }
         val addInstagramButton:ImageView = findViewById(R.id.addInstagramButton)
         addInstagramButton.setOnClickListener {
