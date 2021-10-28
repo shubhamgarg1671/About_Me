@@ -2,6 +2,8 @@ package com.example.aboutme
 
 import android.content.Intent
 import android.graphics.BitmapFactory
+import android.graphics.Color
+import android.graphics.drawable.ColorDrawable
 import android.net.Uri
 import android.os.Bundle
 import android.provider.MediaStore
@@ -82,6 +84,8 @@ class MainActivity : AppCompatActivity() {
             val factory = LayoutInflater.from(this)
             val dialogView: View = factory.inflate(R.layout.facebook_dialogbox, null)
             val dialog = AlertDialog.Builder(this).create()
+            dialog.getWindow()?.setBackgroundDrawable(ColorDrawable(Color.TRANSPARENT));
+
             dialog.setView(dialogView)
             dialogView.findViewById<Button>(R.id.dialog_fb).setOnClickListener{
                 val fblink:EditText = dialogView.findViewById<EditText>(R.id.dialog_fb_link)
