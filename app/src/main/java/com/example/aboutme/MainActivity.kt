@@ -19,7 +19,6 @@ import com.google.firebase.storage.StorageReference
 import java.io.FileNotFoundException
 import java.io.InputStream
 
-
 class MainActivity : AppCompatActivity() {
     val TAG = "MainActivity"
     private val PICK_FROM_GALLARY = 2
@@ -80,19 +79,18 @@ class MainActivity : AppCompatActivity() {
         val addFacebookButton:ImageView = findViewById(R.id.addFacebookButton)
         addFacebookButton.setOnClickListener {
 
-
             val factory = LayoutInflater.from(this)
-            val deleteDialogView: View = factory.inflate(R.layout.facebook_dialogbox, null)
-            val deleteDialog = AlertDialog.Builder(this).create()
-            deleteDialog.setView(deleteDialogView)
-            deleteDialogView.findViewById<Button>(R.id.dialog_fb).setOnClickListener{
-                val fblink:EditText = deleteDialogView.findViewById<EditText>(R.id.dialog_fb_link)
+            val dialogView: View = factory.inflate(R.layout.facebook_dialogbox, null)
+            val dialog = AlertDialog.Builder(this).create()
+            dialog.setView(dialogView)
+            dialogView.findViewById<Button>(R.id.dialog_fb).setOnClickListener{
+                val fblink:EditText = dialogView.findViewById<EditText>(R.id.dialog_fb_link)
                 val link:String = fblink.text.toString()
                 Log.d(TAG, "onDialog $link")
-                deleteDialog.cancel()
+                dialog.cancel()
             }
 
-            deleteDialog.show()
+            dialog.show()
 
 //            dialogBoxwithEdittext("Facebook","Add Profile Link")
         }
