@@ -103,7 +103,7 @@ class MainActivity : AppCompatActivity() {
                         Toast.makeText(this, "Link is not correct", Toast.LENGTH_LONG).show()
                 }
             }
-            dialogView.findViewById<Button>(R.id.fb_dialog_cancel).setOnClickListener {
+            dialogView.findViewById<TextView>(R.id.fb_dialog_cancel).setOnClickListener {
                 dialog.cancel()
             }
             dialog.show()
@@ -131,7 +131,7 @@ class MainActivity : AppCompatActivity() {
                     Toast.makeText(this, "Link is not correct", Toast.LENGTH_LONG).show()
                 }
             }
-            dialogView.findViewById<Button>(R.id.insta_dialog_cancel).setOnClickListener {
+            dialogView.findViewById<TextView>(R.id.insta_dialog_cancel).setOnClickListener {
                 dialog.cancel()
             }
             dialog.show()
