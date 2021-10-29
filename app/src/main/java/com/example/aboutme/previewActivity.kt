@@ -108,17 +108,20 @@ class previewActivity : AppCompatActivity() {
                     instagramButton.visibility = View.GONE
                 }
                 otherSocialLink = dataSnapshot.child("others").getValue().toString()
-                emailAddress = dataSnapshot.child("email").getValue() as String
-
-                Address = dataSnapshot.child("address").getValue() as String
+                emailAddress = dataSnapshot.child("email").getValue() as String?
+                if (emailAddress == null) {
+                    emailButton.visibility = View.GONE
+                }
+                Address = dataSnapshot.child("address").getValue() as String?
                 if (Address == null) {
                     addressButton.visibility = View.GONE
                 }
-                phoneNumber = dataSnapshot.child("phone number").getValue().toString()
+                phoneNumber = dataSnapshot.child("phone number").getValue() as String?
                 if (phoneNumber == null) {
                     phoneButton.visibility = View.GONE
                 }
-                website = dataSnapshot.child("website").getValue() as String
+                website = dataSnapshot.child("website").getValue() as String?
+
                 if (website == null) {
                     websiteButton.visibility = View.GONE
                 }
