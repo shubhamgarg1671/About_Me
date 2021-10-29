@@ -40,18 +40,24 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_marginTop="65dp"
+                android:inputType="text"
+                android:maxLines="1"
                 android:hint="Title" />
             <EditText
                 android:id="@+id/dialog_insta_link"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_marginTop="24dp"
+                android:maxLines="1"
+                android:inputType="textUri"
                 android:hint="Link" />
             <EditText
                 android:id="@+id/dialog_insta_desription"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_marginTop="24dp"
+                android:maxLines="1"
+                android:inputType="textUri"
                 android:hint="Description (Optional)" />
             <Button
                 android:id="@+id/dialog_insta"
