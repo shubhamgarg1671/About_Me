@@ -13,6 +13,7 @@ import android.view.View
 import android.widget.*
 import androidx.appcompat.app.AlertDialog
 import androidx.appcompat.app.AppCompatActivity
+import androidx.cardview.widget.CardView
 import com.google.firebase.auth.FirebaseAuth
 import com.google.firebase.database.*
 import com.google.firebase.database.ktx.getValue
@@ -83,6 +84,8 @@ class MainActivity : AppCompatActivity() {
 
             val factory = LayoutInflater.from(this)
             val dialogView: View = factory.inflate(R.layout.facebook_dialogbox, null)
+            val dialogImageCardFb:CardView = dialogView.findViewById(R.id.dialogImageCardFb)
+            dialogImageCardFb.bringToFront()
             val dialog = AlertDialog.Builder(this).create()
             dialog.getWindow()?.setBackgroundDrawable(ColorDrawable(Color.TRANSPARENT));
 
