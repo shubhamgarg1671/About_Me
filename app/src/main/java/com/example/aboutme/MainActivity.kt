@@ -138,7 +138,31 @@ class MainActivity : AppCompatActivity() {
         }
         val addLinkedinButton:ImageView = findViewById(R.id.addLinkedinButton)
         addLinkedinButton.setOnClickListener {
-            dialogBoxwithEdittext("Linkedin","Add Profile Link")
+            val factory = LayoutInflater.from(this)
+            val dialogView: View = factory.inflate(R.layout.instagram_dialogue_box, null)
+            val dialogImageCardInsta:CardView = dialogView.findViewById(R.id.dialogImageCardInsta)
+            dialogImageCardInsta.bringToFront()
+            val dialog = AlertDialog.Builder(this).create()
+            dialog.getWindow()?.setBackgroundDrawable(ColorDrawable(Color.TRANSPARENT));
+
+            dialog.setView(dialogView)
+            dialogView.findViewById<Button>(R.id.dialog_insta).setOnClickListener{
+                val instalink:EditText = dialogView.findViewById<EditText>(R.id.dialog_insta_link)
+                val link:String = instalink.text.toString()
+                if (Patterns.WEB_URL.matcher(link).matches()) {
+                    myRef = database.getReference("user/$uid/Instagram")
+                    myRef.setValue(link)
+                    Log.d(TAG, "onDialog $link")
+                    dialog.cancel()
+                } else {
+                    Toast.makeText(this, "Link is not correct", Toast.LENGTH_LONG).show()
+                }
+            }
+            dialogView.findViewById<TextView>(R.id.insta_dialog_cancel).setOnClickListener {
+                dialog.cancel()
+            }
+            dialog.show()
+//            dialogBoxwithEdittext("Linkedin","Add Profile Link")
         }
         val addMoreProfileButton:ImageView = findViewById(R.id.addMoreProfileButton)
         addMoreProfileButton.setOnClickListener {
