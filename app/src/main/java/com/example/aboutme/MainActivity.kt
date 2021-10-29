@@ -95,7 +95,7 @@ class MainActivity : AppCompatActivity() {
                 val fblink:EditText = dialogView.findViewById<EditText>(R.id.dialog_fb_link)
                 val link:String = fblink.text.toString()
                 if( Patterns.WEB_URL.matcher(link).matches()) {
-                        myRef = database.getReference("user/$uid/Facebook")
+                        myRef = database.getReference("user/$uid/facebook")
                         myRef.setValue(link)
                         Log.d(TAG, "onDialog $link")
                         dialog.cancel()
@@ -123,7 +123,7 @@ class MainActivity : AppCompatActivity() {
                 val instalink:EditText = dialogView.findViewById<EditText>(R.id.dialog_insta_link)
                 val link:String = instalink.text.toString()
                 if (Patterns.WEB_URL.matcher(link).matches()) {
-                    myRef = database.getReference("user/$uid/Instagram")
+                    myRef = database.getReference("user/$uid/instagram")
                     myRef.setValue(link)
                     Log.d(TAG, "onDialog $link")
                     dialog.cancel()
@@ -150,7 +150,7 @@ class MainActivity : AppCompatActivity() {
                 val instalink:EditText = dialogView.findViewById<EditText>(R.id.dialog_lkd_link)
                 val link:String = instalink.text.toString()
                 if (Patterns.WEB_URL.matcher(link).matches()) {
-                    myRef = database.getReference("user/$uid/Linkedin")
+                    myRef = database.getReference("user/$uid/linkedin")
                     myRef.setValue(link)
                     Log.d(TAG, "onDialog $link")
                     dialog.cancel()

@@ -9,6 +9,7 @@ import android.graphics.BitmapFactory
 import android.net.Uri
 import android.os.Bundle
 import android.util.Log
+import android.view.View
 import android.widget.ImageButton
 import android.widget.ImageView
 import android.widget.TextView
@@ -33,66 +34,23 @@ class previewActivity : AppCompatActivity() {
         setContentView(R.layout.activity_preview)
         val uid = FirebaseAuth.getInstance().uid!!
         val database = FirebaseDatabase.getInstance()
-        var facebookLink:String = ""
-        var instagramLink:String = ""
-        var linkedinLink:String = ""
-        var otherSocialLink:String = ""
-        var emailAddress:String = ""
-        var Address:String = ""
-        var phoneNumber:String = ""
-        var website:String = ""
-        var yourLink:String = ""
-        val profileName2:TextView = findViewById(R.id.profileName2)
-        val bio_text2:TextView = findViewById(R.id.bio_text2)
-        val myRef = database.getReference("user/$uid")
-        myRef.addValueEventListener(object : ValueEventListener {
-            override fun onDataChange(dataSnapshot: DataSnapshot) {
-                // This method is called once with the initial value and again
-                // whenever data at this location is updated.
-                val value = dataSnapshot.getValue()
-                Log.d(TAG, "Value is: $value")
-
-                facebookLink = dataSnapshot.child("facebook").getValue().toString()
-                instagramLink = dataSnapshot.child("instagram").getValue().toString()
-                linkedinLink = dataSnapshot.child("linkedin").getValue().toString()
-                otherSocialLink = dataSnapshot.child("others").getValue().toString()
-                emailAddress = dataSnapshot.child("email").getValue().toString()
-                Address = dataSnapshot.child("address").getValue().toString()
-                phoneNumber = dataSnapshot.child("phone number").getValue().toString()
-                website = dataSnapshot.child("website").getValue().toString()
-                yourLink = dataSnapshot.child("yourLink").getValue().toString()
-                profileName2.setText(dataSnapshot.child("profileName").getValue().toString())
-                bio_text2.setText(dataSnapshot.child("bio").getValue().toString())
-//                copyToClipBoard(yourLink)
-//                Log.d(TAG, "yourLink ${yourLink}")
-//                richLinkView = findViewById<RichLinkView>(R.id.richLinkView)
-//        richLinkView.setLink(
-//            yourLink,
-//            object : ViewListener {
-//                override fun onSuccess(status: Boolean) {
-//                    Log.d(TAG, "onSuccess() called with: status = $status")
-//                }
-//
-//                override fun onError(e: Exception) {
-//                    Log.e(TAG, "onError() called with: e = $e")
-//                }
-//            }
-//        )
-            }
-
-            override fun onCancelled(error: DatabaseError) {
-                // Failed to read value
-                Log.e(TAG, "Failed to read value.", error.toException())
-            }
-        })
+        var facebookLink:String? = null
+        var instagramLink:String? = null
+        var linkedinLink:String? = null
         val facebookButton:ImageButton = findViewById(R.id.facebookButton)
-        facebookButton.setOnClickListener { redirecttoURL(facebookLink) }
+        facebookButton.setOnClickListener { redirecttoURL(facebookLink!!) }
         val instagramButton:ImageButton = findViewById(R.id.instagramButton)
-        instagramButton.setOnClickListener { redirecttoURL(instagramLink) }
+        instagramButton.setOnClickListener { redirecttoURL(instagramLink!!) }
         val linkedinButton:ImageButton = findViewById(R.id.linkedinButton)
-        linkedinButton.setOnClickListener { redirecttoURL(linkedinLink) }
-        val moreProfileButton:ImageButton = findViewById(R.id.moreProfileButton)
-        moreProfileButton.setOnClickListener { redirecttoURL(otherSocialLink) }
+        linkedinButton.setOnClickListener { redirecttoURL(linkedinLink!!) }
+
+        var otherSocialLink:String = ""
+
+        var emailAddress:String? = null
+        var Address:String? = null
+        var phoneNumber:String? = null
+
+
         val emailButton:ImageButton = findViewById(R.id.emailButton)
         emailButton.setOnClickListener {
             val emailIntent = Intent(
@@ -120,8 +78,77 @@ class previewActivity : AppCompatActivity() {
             intent.data = Uri.parse("tel:${phoneNumber}")
             startActivity(intent)
         }
+
+        var website:String? = null
+
         val websiteButton:ImageButton = findViewById(R.id.websiteButton)
-        websiteButton.setOnClickListener { redirecttoURL(website) }
+        websiteButton.setOnClickListener { redirecttoURL(website!!) }
+
+        var yourLink:String = ""
+        val profileName2:TextView = findViewById(R.id.profileName2)
+        val bio_text2:TextView = findViewById(R.id.bio_text2)
+        val myRef = database.getReference("user/$uid")
+        myRef.addValueEventListener(object : ValueEventListener {
+            override fun onDataChange(dataSnapshot: DataSnapshot) {
+                // This method is called once with the initial value and again
+                // whenever data at this location is updated.
+                val value = dataSnapshot.getValue()
+                Log.d(TAG, "Value is: $value")
+
+                facebookLink = dataSnapshot.child("facebook").getValue() as String?
+                if (facebookLink == null) {
+                    facebookButton.visibility = View.GONE
+                }
+                instagramLink = dataSnapshot.child("instagram").getValue() as String?
+                if (instagramLink == null) {
+                    instagramButton.visibility = View.GONE
+                }
+                linkedinLink = dataSnapshot.child("linkedin").getValue() as String?
+                if (linkedinLink == null) {
+                    instagramButton.visibility = View.GONE
+                }
+                otherSocialLink = dataSnapshot.child("others").getValue().toString()
+                emailAddress = dataSnapshot.child("email").getValue() as String
+
+                Address = dataSnapshot.child("address").getValue() as String
+                if (Address == null) {
+                    addressButton.visibility = View.GONE
+                }
+                phoneNumber = dataSnapshot.child("phone number").getValue().toString()
+                if (phoneNumber == null) {
+                    phoneButton.visibility = View.GONE
+                }
+                website = dataSnapshot.child("website").getValue() as String
+                if (website == null) {
+                    websiteButton.visibility = View.GONE
+                }
+                yourLink = dataSnapshot.child("yourLink").getValue().toString()
+                profileName2.setText(dataSnapshot.child("profileName").getValue().toString())
+                bio_text2.setText(dataSnapshot.child("bio").getValue().toString())
+//                copyToClipBoard(yourLink)
+//                Log.d(TAG, "yourLink ${yourLink}")
+//                richLinkView = findViewById<RichLinkView>(R.id.richLinkView)
+//        richLinkView.setLink(
+//            yourLink,
+//            object : ViewListener {
+//                override fun onSuccess(status: Boolean) {
+//                    Log.d(TAG, "onSuccess() called with: status = $status")
+//                }
+//
+//                override fun onError(e: Exception) {
+//                    Log.e(TAG, "onError() called with: e = $e")
+//                }
+//            }
+//        )
+            }
+
+            override fun onCancelled(error: DatabaseError) {
+                // Failed to read value
+                Log.e(TAG, "Failed to read value.", error.toException())
+            }
+        })
+        val moreProfileButton:ImageButton = findViewById(R.id.moreProfileButton)
+        moreProfileButton.setOnClickListener { redirecttoURL(otherSocialLink) }
 
         val storage = FirebaseStorage.getInstance()
         val profileImage = findViewById<ImageView>(R.id.profileImage)
@@ -146,6 +173,7 @@ class previewActivity : AppCompatActivity() {
         }
     }
     fun redirecttoURL(url:String) {
+        Log.d(TAG, "redirecttoURL() called with: url = $url")
         val httpIntent = Intent(Intent.ACTION_VIEW)
         httpIntent.data = Uri.parse(url)
         startActivity(httpIntent)
