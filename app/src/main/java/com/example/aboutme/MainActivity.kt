@@ -8,6 +8,7 @@ import android.net.Uri
 import android.os.Bundle
 import android.provider.MediaStore
 import android.util.Log
+import android.util.Patterns
 import android.view.LayoutInflater
 import android.view.View
 import android.widget.*
@@ -93,10 +94,15 @@ class MainActivity : AppCompatActivity() {
             dialogView.findViewById<Button>(R.id.dialog_fb).setOnClickListener{
                 val fblink:EditText = dialogView.findViewById<EditText>(R.id.dialog_fb_link)
                 val link:String = fblink.text.toString()
-                Log.d(TAG, "onDialog $link")
-                dialog.cancel()
+                if( Patterns.WEB_URL.matcher(link).matches()) {
+                        myRef = database.getReference("user/$uid/Facebook")
+                        myRef.setValue(link)
+                        Log.d(TAG, "onDialog $link")
+                        dialog.cancel()
+                } else {
+                        Toast.makeText(this, "Link is not correct", Toast.LENGTH_LONG).show()
+                }
             }
-
             dialog.show()
 
 //            dialogBoxwithEdittext("Facebook","Add Profile Link")
