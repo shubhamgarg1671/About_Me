@@ -94,8 +94,8 @@
 
         <ImageButton
             android:id="@+id/addFacebookButton"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
+            android:layout_width="40dp"
+            android:layout_height="40dp"
             android:src="@drawable/ic_facebook"
             android:background="@color/white"
             app:layout_constraintEnd_toStartOf="@+id/addInstagramButton"
@@ -113,8 +113,8 @@
 
         <ImageButton
             android:id="@+id/addInstagramButton"
-            android:layout_width="wrap_content"
-            android:layout_height="50dp"
+            android:layout_width="40dp"
+            android:layout_height="40dp"
             android:src="@drawable/ic_instagram"
             android:adjustViewBounds="true"
             android:scaleType="centerCrop"
@@ -134,8 +134,8 @@
 
         <ImageButton
             android:id="@+id/addLinkedinButton"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
+            android:layout_width="40dp"
+            android:layout_height="40dp"
             android:src="@drawable/ic_linkedin_icon"
             android:background="@color/white"
             app:layout_constraintEnd_toStartOf="@+id/addMoreProfileButton"
@@ -153,7 +153,7 @@
             app:layout_constraintBottom_toBottomOf="parent"/>
         <ImageButton
             android:id="@+id/addMoreProfileButton"
-            android:layout_width="wrap_content"
+            android:layout_width="40dp"
             android:layout_height="50dp"
             android:src="@drawable/ic_addmoreicon"
             android:background="@color/white"
@@ -171,58 +171,80 @@
             app:layout_constraintBottom_toBottomOf="parent" />
 
     </androidx.constraintlayout.widget.ConstraintLayout>
-        <androidx.constraintlayout.widget.ConstraintLayout
+
+            <androidx.constraintlayout.widget.ConstraintLayout
                 android:id="@+id/addPaymentLinks"
                 android:layout_width="match_parent"
                 android:layout_height="110dp"
-                android:paddingTop="15dp"
-                android:paddingBottom="15dp"
                 android:layout_margin="24dp"
                 android:background="@drawable/card_view_border"
-                app:layout_constraintTop_toBottomOf="@+id/socialLinks">
+                android:paddingTop="15dp"
+                android:paddingBottom="15dp"
+                app:layout_constraintTop_toBottomOf="@+id/socialLinks"
+                tools:layout_editor_absoluteX="24dp">
 
                 <ImageButton
                     android:id="@+id/addPaytm"
                     android:layout_width="40dp"
                     android:layout_height="40dp"
                     android:src="@drawable/paytm"
-                    app:layout_constraintLeft_toLeftOf="parent"
+                    app:layout_constraintEnd_toStartOf="@+id/addPhonePe"
+                    app:layout_constraintHorizontal_bias="0.5"
+                    app:layout_constraintStart_toStartOf="parent"
                     app:layout_constraintTop_toTopOf="parent" />
-            <TextView
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:text="Paytm"
-                app:layout_constraintRight_toRightOf="@+id/addPaytm"
-                app:layout_constraintLeft_toLeftOf="@+id/addPaytm"
-                app:layout_constraintTop_toBottomOf="@+id/addPaytm"
-                app:layout_constraintBottom_toBottomOf="parent"/>
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="Paytm"
+                    app:layout_constraintBottom_toBottomOf="parent"
+                    app:layout_constraintLeft_toLeftOf="@+id/addPaytm"
+                    app:layout_constraintRight_toRightOf="@+id/addPaytm"
+                    app:layout_constraintTop_toBottomOf="@+id/addPaytm" />
 
                 <ImageButton
                     android:id="@+id/addPhonePe"
                     android:layout_width="40dp"
                     android:layout_height="40dp"
                     android:src="@drawable/ic_phonepe_logo_svg_vfqcs9"
-                    app:layout_constraintTop_toTopOf="parent"
-                    app:layout_constraintLeft_toRightOf="@+id/addPaytm"/>
-            <TextView
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:text="PhonePe"
-                app:layout_constraintBottom_toBottomOf="parent"
-                app:layout_constraintTop_toBottomOf="@+id/addPhonePe"
-                app:layout_constraintLeft_toLeftOf="@+id/addPhonePe"
-                app:layout_constraintRight_toRightOf="@+id/addPhonePe"/>
+                    app:layout_constraintEnd_toStartOf="@+id/addMobiwik"
+                    app:layout_constraintHorizontal_bias="0.5"
+                    app:layout_constraintStart_toEndOf="@+id/addPaytm"
+                    app:layout_constraintTop_toTopOf="parent" />
 
-            <ImageButton
-                android:layout_width="40dp"
-                android:layout_height="40dp"
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="PhonePe"
+                    app:layout_constraintBottom_toBottomOf="parent"
+                    app:layout_constraintLeft_toLeftOf="@+id/addPhonePe"
+                    app:layout_constraintRight_toRightOf="@+id/addPhonePe"
+                    app:layout_constraintTop_toBottomOf="@+id/addPhonePe" />
 
-                app:layout_constraintTop_toTopOf="parent"
-                app:layout_constraintLeft_toRightOf="@+id/addPhonePe"/>
-        </androidx.constraintlayout.widget.ConstraintLayout>
+                <ImageButton
+                    android:id="@+id/addMobiwik"
+                    android:layout_width="40dp"
+                    android:layout_height="40dp"
+                    android:src="@drawable/mobivik"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintHorizontal_bias="0.5"
+                    app:layout_constraintStart_toEndOf="@+id/addPhonePe"
+                    app:layout_constraintTop_toTopOf="parent" />
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="Mobikwik"
+                    app:layout_constraintBottom_toBottomOf="parent"
+                    app:layout_constraintLeft_toLeftOf="@+id/addMobiwik"
+                    app:layout_constraintRight_toRightOf="@+id/addMobiwik"
+                    app:layout_constraintTop_toBottomOf="@+id/addMobiwik" />
+
+            </androidx.constraintlayout.widget.ConstraintLayout>
 
 
     <androidx.constraintlayout.widget.ConstraintLayout
+
         android:id="@+id/contactDetails"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
