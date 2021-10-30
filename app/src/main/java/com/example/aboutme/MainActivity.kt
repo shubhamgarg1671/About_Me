@@ -1,8 +1,10 @@
 package com.example.aboutme
 
 import android.content.Intent
+import android.graphics.Bitmap
 import android.graphics.BitmapFactory
 import android.graphics.Color
+import android.graphics.drawable.BitmapDrawable
 import android.graphics.drawable.ColorDrawable
 import android.net.Uri
 import android.os.Bundle
@@ -18,13 +20,17 @@ import androidx.cardview.widget.CardView
 import com.google.firebase.auth.FirebaseAuth
 import com.google.firebase.database.*
 import com.google.firebase.database.ktx.getValue
+import com.google.firebase.ktx.Firebase
 import com.google.firebase.storage.FirebaseStorage
 import com.google.firebase.storage.StorageReference
+import com.google.firebase.storage.ktx.storage
+import java.io.ByteArrayOutputStream
 import java.io.FileNotFoundException
 import java.io.InputStream
 
 class MainActivity : AppCompatActivity() {
     val TAG = "MainActivity"
+    var imageUploaded:Boolean = false
     private val PICK_FROM_GALLARY = 2
     lateinit var addProfileImage:ImageView
     lateinit var profileName:TextView
@@ -75,11 +81,11 @@ class MainActivity : AppCompatActivity() {
                 Toast.LENGTH_LONG
             ).show()
         }
-//        addProfileImage.setOnClickListener{
-//            val galleryIntent =
-//                Intent(Intent.ACTION_PICK, MediaStore.Images.Media.EXTERNAL_CONTENT_URI)
-//            startActivityForResult(galleryIntent, PICK_FROM_GALLARY)
-//        }
+        addProfileImage.setOnClickListener{
+            val galleryIntent =
+                Intent(Intent.ACTION_PICK, MediaStore.Images.Media.EXTERNAL_CONTENT_URI)
+            startActivityForResult(galleryIntent, PICK_FROM_GALLARY)
+        }
         val addFacebookButton:ImageView = findViewById(R.id.addFacebookButton)
         addFacebookButton.setOnClickListener {
 
@@ -183,9 +189,33 @@ class MainActivity : AppCompatActivity() {
         addWebsiteButton.setOnClickListener {
             dialogBoxwithEdittext("Website","Enter Website link")
         }
+        val storageRef = storage.reference
 
         val publishButton: Button = findViewById(R.id.publishButton)
         publishButton.setOnClickListener {
+
+            if (imageUploaded) {
+                addProfileImage.isDrawingCacheEnabled = true
+                addProfileImage.buildDrawingCache()
+                val bitmap: Bitmap = (addProfileImage.drawable as BitmapDrawable).bitmap
+                val baos = ByteArrayOutputStream()
+                bitmap.compress(Bitmap.CompressFormat.JPEG, 100, baos)
+                val data = baos.toByteArray()
+                // Points to "images"
+
+                val imagesRef = storageRef.child("image/${auth.uid}/profilePicture")
+                val uploadTask = imagesRef.putBytes(data)
+                uploadTask.addOnFailureListener {
+                    Log.e(TAG, "onCreate() called $it")
+                    // Handle unsuccessful uploads
+                }.addOnSuccessListener { taskSnapshot ->
+                    // taskSnapshot.metadata contains file metadata such as size, content-type, etc.
+                    // ...
+                    Log.d(TAG, "onCreate() called with: taskSnapshot = $taskSnapshot")
+                }
+            }
+
+
             val yourLink:String = findViewById<EditText>(R.id.yourLink).text.toString()
             myRef = database.getReference("user/$uid/yourLink")
             myRef.setValue(yourLink)
@@ -219,6 +249,7 @@ class MainActivity : AppCompatActivity() {
                     }
                     val selectedImage = BitmapFactory.decodeStream(imageStream)
                     addProfileImage.setImageBitmap(selectedImage)
+                    imageUploaded = true
                 } catch (e: FileNotFoundException) {
                     e.printStackTrace()
                     Toast.makeText(this, "Something went wrong", Toast.LENGTH_LONG).show()
