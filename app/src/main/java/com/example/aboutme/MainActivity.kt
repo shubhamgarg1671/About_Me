@@ -189,8 +189,13 @@ class MainActivity : AppCompatActivity() {
         addWebsiteButton.setOnClickListener {
             dialogBoxwithEdittext("Website","Enter Website link")
         }
-        val storageRef = storage.reference
 
+
+
+
+
+
+        val storageRef = storage.reference
         val publishButton: Button = findViewById(R.id.publishButton)
         publishButton.setOnClickListener {
 
