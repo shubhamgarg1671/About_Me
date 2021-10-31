@@ -190,10 +190,18 @@ class MainActivity : AppCompatActivity() {
             dialogBoxwithEdittext("Website","Enter Website link")
         }
 
-
-
-
-
+        val addPaytm:ImageButton = findViewById(R.id.addPaytm)
+        addPaytm.setOnClickListener {
+            dialogBoxwithEdittext("Paytm","Enter paytm link")
+        }
+        val addPhonePe:ImageButton = findViewById(R.id.addPhonePe)
+        addPhonePe.setOnClickListener {
+            dialogBoxwithEdittext("Paytm","Enter paytm link")
+        }
+        val addMobiwik:ImageButton = findViewById(R.id.addMobiwik)
+        addMobiwik.setOnClickListener {
+            dialogBoxwithEdittext("Mobiwik", "Enter Mobiwik")
+        }
 
         val storageRef = storage.reference
         val publishButton: Button = findViewById(R.id.publishButton)
