@@ -30,7 +30,7 @@ class Welcome : AppCompatActivity() {
         }
     }
     fun afterLogIn(currentUser: FirebaseUser) {
-        val intent = Intent(this, previewActivity::class.java)
+        val intent = Intent(this, HomeScreen::class.java)
         startActivity(intent)
         finish()
     }
