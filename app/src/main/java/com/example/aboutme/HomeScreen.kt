@@ -1,10 +1,12 @@
 package com.example.aboutme
 
 import android.content.Intent
-import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
+import android.provider.AlarmClock.EXTRA_MESSAGE
 import android.widget.Button
 import android.widget.EditText
+import androidx.appcompat.app.AppCompatActivity
+
 
 class HomeScreen : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -19,7 +21,9 @@ class HomeScreen : AppCompatActivity() {
         }
         val button:Button = findViewById(R.id.Button)
         button.setOnClickListener {
-            val intent:Intent = Intent(this, previewActivity::class.java,)
+            val intent:Intent = Intent(this, previewActivity::class.java).apply {
+                putExtra(EXTRA_MESSAGE, uid)
+            }
             startActivity(intent)
         }
     }
