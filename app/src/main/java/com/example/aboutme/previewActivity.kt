@@ -8,6 +8,7 @@ import android.content.Intent
 import android.graphics.BitmapFactory
 import android.net.Uri
 import android.os.Bundle
+import android.provider.AlarmClock.EXTRA_MESSAGE
 import android.util.Log
 import android.view.View
 import android.widget.ImageButton
@@ -32,7 +33,15 @@ class previewActivity : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_preview)
-        val uid = FirebaseAuth.getInstance().uid!!
+
+//        val uid:
+
+        val uid:String
+        if (intent.getStringExtra(EXTRA_MESSAGE) != null) {
+            uid = intent.getStringExtra(EXTRA_MESSAGE)!!
+        } else {
+            uid = FirebaseAuth.getInstance().uid!!
+        }
         val database = FirebaseDatabase.getInstance()
         var facebookLink:String? = null
         var instagramLink:String? = null
