@@ -246,6 +246,11 @@ class MainActivity : AppCompatActivity() {
             val intent = Intent(this, previewActivity::class.java)
             startActivity(intent)
         }
+        val add_to_bio:Button = findViewById(R.id.add_to_bio)
+        add_to_bio.setOnClickListener {
+            val intent:Intent = Intent(this,addToBio::class.java)
+            startActivity(intent)
+        }
     }
 
     override fun onActivityResult(requestCode: Int, resultCode: Int, data: Intent?) {
