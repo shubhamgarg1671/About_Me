@@ -1,5 +1,8 @@
 package com.example.aboutme
 
+import android.content.ClipData
+import android.content.ClipboardManager
+import android.content.Context
 import android.content.Intent
 import android.graphics.Bitmap
 import android.graphics.BitmapFactory
@@ -228,7 +231,6 @@ class MainActivity : AppCompatActivity() {
                 }
             }
 
-
             val yourLink:String = findViewById<EditText>(R.id.yourLink).text.toString()
             myRef = database.getReference("user/$uid/yourLink")
             myRef.setValue(yourLink)
@@ -251,6 +253,17 @@ class MainActivity : AppCompatActivity() {
             val intent:Intent = Intent(this,addToBio::class.java)
             startActivity(intent)
         }
+        val share_button:Button = findViewById(R.id.share_button)
+        share_button.setOnClickListener {
+            copyToClipBoard(uid)
+            Toast.makeText(this, "UID copied to clipboard", Toast.LENGTH_SHORT).show()
+        }
+    }
+    private fun copyToClipBoard(str: String) {
+        val clipboard: ClipboardManager =
+            getSystemService(Context.CLIPBOARD_SERVICE) as ClipboardManager
+        val clip = ClipData.newPlainText(android.R.attr.label.toString(), str)
+        clipboard.setPrimaryClip(clip)
     }
 
     override fun onActivityResult(requestCode: Int, resultCode: Int, data: Intent?) {
