@@ -39,8 +39,10 @@ class previewActivity : AppCompatActivity() {
         val uid:String
         if (intent.getStringExtra(EXTRA_MESSAGE) != null) {
             uid = intent.getStringExtra(EXTRA_MESSAGE)!!
+            Log.d(TAG, "uid: $uid")
         } else {
             uid = FirebaseAuth.getInstance().uid!!
+            Log.d(TAG, "uid: $uid")
         }
         val database = FirebaseDatabase.getInstance()
         var facebookLink:String? = null
@@ -114,7 +116,7 @@ class previewActivity : AppCompatActivity() {
                 }
                 linkedinLink = dataSnapshot.child("linkedin").getValue() as String?
                 if (linkedinLink == null) {
-                    instagramButton.visibility = View.GONE
+                    linkedinButton.visibility = View.GONE
                 }
                 otherSocialLink = dataSnapshot.child("others").getValue().toString()
                 emailAddress = dataSnapshot.child("email").getValue() as String?
