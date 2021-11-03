@@ -79,7 +79,10 @@ class MainActivity : AppCompatActivity() {
         addPaymentLinksHeading.run {
             bringToFront()
         }
-
+        val contactDetailsHeading = findViewById<TextView>(R.id.contactDetailsHeading)
+        contactDetailsHeading.run {
+            bringToFront()
+        }
         val storage = FirebaseStorage.getInstance()
         addProfileImage = findViewById<ImageView>(R.id.addProfileImage)
         val storageReference: StorageReference = storage.reference
