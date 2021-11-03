@@ -256,6 +256,18 @@ class MainActivity : AppCompatActivity() {
         val share_button:Button = findViewById(R.id.share_button)
         share_button.setOnClickListener {
             copyToClipBoard(uid)
+//            val share = Intent.createChooser(Intent().apply {
+//                action = Intent.ACTION_SEND
+//                putExtra(Intent.EXTRA_TEXT, "https://developer.android.com/training/sharing/")
+//
+//                // (Optional) Here we're setting the title of the content
+//                putExtra(Intent.EXTRA_TITLE, "Introducing content previews")
+//
+//                // (Optional) Here we're passing a content URI to an image to be displayed
+////                data = contentUri
+//                flags = Intent.FLAG_GRANT_READ_URI_PERMISSION
+//            }, null)
+//            startActivity(share)
             Toast.makeText(this, "UID copied to clipboard", Toast.LENGTH_SHORT).show()
         }
     }

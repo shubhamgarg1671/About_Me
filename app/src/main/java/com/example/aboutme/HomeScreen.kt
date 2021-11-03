@@ -17,7 +17,7 @@ class HomeScreen : AppCompatActivity() {
         val edittextUid:EditText = findViewById(R.id.edittextUid)
         val editProfile:Button = findViewById(R.id.editProfile)
         editProfile.setOnClickListener {
-            val intent:Intent = Intent(this,previewActivity::class.java)
+            val intent:Intent = Intent(this,MainActivity::class.java)
             startActivity(intent)
         }
         val button:Button = findViewById(R.id.Button)
