@@ -67,6 +67,11 @@ class MainActivity : AppCompatActivity() {
             }
         })
 
+        val socialLinksHeading:TextView = findViewById(R.id.socialLinksHeading)
+        socialLinksHeading.run {
+            bringToFront()
+        }
+
 
         val storage = FirebaseStorage.getInstance()
         addProfileImage = findViewById<ImageView>(R.id.addProfileImage)
