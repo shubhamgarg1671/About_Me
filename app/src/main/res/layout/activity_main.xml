@@ -183,12 +183,12 @@
                 app:layout_constraintTop_toBottomOf="@+id/socialLinks">
 
                 <ImageButton
-                    android:id="@+id/battleGroundButton"
+                    android:id="@+id/addBattleGroundButton"
                     android:layout_width="40dp"
                     android:layout_height="40dp"
                     android:src="@drawable/ic_facebook"
                     android:background="@color/white"
-                    app:layout_constraintEnd_toStartOf="@+id/addInstagramButton"
+                    app:layout_constraintEnd_toStartOf="@+id/addFreefireButton"
                     app:layout_constraintHorizontal_bias="0.5"
                     app:layout_constraintTop_toTopOf="parent"
                     app:layout_constraintStart_toStartOf="parent" />
@@ -198,51 +198,51 @@
                     android:layout_height="wrap_content"
                     android:text="Battleground"
                     app:layout_constraintBottom_toBottomOf="parent"
-                    app:layout_constraintLeft_toLeftOf="@+id/addFacebookButton"
-                    app:layout_constraintRight_toRightOf="@+id/addFacebookButton"/>
+                    app:layout_constraintLeft_toLeftOf="@+id/addBattleGroundButton"
+                    app:layout_constraintRight_toRightOf="@+id/addBattleGroundButton"/>
 
                 <ImageButton
-                    android:id="@+id/addInstagramButton"
+                    android:id="@+id/addFreefireButton"
                     android:layout_width="40dp"
                     android:layout_height="40dp"
                     android:src="@drawable/ic_instagram"
                     android:adjustViewBounds="true"
                     android:scaleType="centerCrop"
                     android:background="@color/white"
-                    app:layout_constraintEnd_toStartOf="@+id/addLinkedinButton"
+                    app:layout_constraintEnd_toStartOf="@+id/addNeedSpeedButton"
                     app:layout_constraintHorizontal_bias="0.5"
                     app:layout_constraintTop_toTopOf="parent"
-                    app:layout_constraintStart_toEndOf="@+id/addFacebookButton" />
+                    app:layout_constraintStart_toEndOf="@+id/addBattleGroundButton" />
 
                 <TextView
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:text=" Instagram "
                     app:layout_constraintBottom_toBottomOf="parent"
-                    app:layout_constraintLeft_toLeftOf="@+id/addInstagramButton"
-                    app:layout_constraintRight_toRightOf="@+id/addInstagramButton"/>
+                    app:layout_constraintLeft_toLeftOf="@+id/addFreefireButton"
+                    app:layout_constraintRight_toRightOf="@+id/addFreefireButton"/>
 
                 <ImageButton
-                    android:id="@+id/addLinkedinButton"
+                    android:id="@+id/addNeedSpeedButton"
                     android:layout_width="40dp"
                     android:layout_height="40dp"
                     android:src="@drawable/ic_linkedin_icon"
                     android:background="@color/white"
-                    app:layout_constraintEnd_toStartOf="@+id/addMoreProfileButton"
+                    app:layout_constraintEnd_toStartOf="@+id/addGameButton"
                     app:layout_constraintHorizontal_bias="0.5"
                     app:layout_constraintTop_toTopOf="parent"
-                    app:layout_constraintStart_toEndOf="@+id/addInstagramButton" />
+                    app:layout_constraintStart_toEndOf="@+id/addFreefireButton" />
 
                 <TextView
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:text=" Linkedin "
-                    app:layout_constraintRight_toRightOf="@+id/addLinkedinButton"
-                    app:layout_constraintLeft_toLeftOf="@+id/addLinkedinButton"
-                    app:layout_constraintTop_toBottomOf="@+id/addLinkedinButton"
+                    app:layout_constraintRight_toRightOf="@+id/addNeedSpeedButton"
+                    app:layout_constraintLeft_toLeftOf="@+id/addNeedSpeedButton"
+                    app:layout_constraintTop_toBottomOf="@+id/addNeedSpeedButton"
                     app:layout_constraintBottom_toBottomOf="parent"/>
                 <ImageButton
-                    android:id="@+id/addMoreProfileButton"
+                    android:id="@+id/addGameButton"
                     android:layout_width="40dp"
                     android:layout_height="50dp"
                     android:src="@drawable/ic_addmoreicon"
@@ -250,14 +250,14 @@
                     app:layout_constraintEnd_toEndOf="parent"
                     app:layout_constraintHorizontal_bias="0.5"
                     app:layout_constraintTop_toTopOf="parent"
-                    app:layout_constraintStart_toEndOf="@+id/addLinkedinButton" />
+                    app:layout_constraintStart_toEndOf="@+id/addNeedSpeedButton" />
                 <TextView
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:text=" Add Other"
-                    app:layout_constraintTop_toBottomOf="@+id/addMoreProfileButton"
-                    app:layout_constraintLeft_toLeftOf="@+id/addMoreProfileButton"
-                    app:layout_constraintRight_toRightOf="@+id/addMoreProfileButton"
+                    app:layout_constraintTop_toBottomOf="@+id/addGameButton"
+                    app:layout_constraintLeft_toLeftOf="@+id/addGameButton"
+                    app:layout_constraintRight_toRightOf="@+id/addGameButton"
                     app:layout_constraintBottom_toBottomOf="parent" />
 
             </androidx.constraintlayout.widget.ConstraintLayout>
@@ -270,7 +270,7 @@
                 android:background="@drawable/card_view_border"
                 android:paddingTop="15dp"
                 android:paddingBottom="15dp"
-                app:layout_constraintTop_toBottomOf="@+id/socialLinks"
+                app:layout_constraintTop_toBottomOf="@+id/gamesLink"
                 tools:layout_editor_absoluteX="24dp">
 
                 <ImageButton
