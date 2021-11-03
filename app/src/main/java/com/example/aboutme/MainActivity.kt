@@ -83,6 +83,11 @@ class MainActivity : AppCompatActivity() {
         contactDetailsHeading.run {
             bringToFront()
         }
+        val addLinksCardHeading:TextView = findViewById(R.id.addLinksCardHeading)
+        addLinksCardHeading.run {
+            bringToFront()
+        }
+
         val storage = FirebaseStorage.getInstance()
         addProfileImage = findViewById<ImageView>(R.id.addProfileImage)
         val storageReference: StorageReference = storage.reference

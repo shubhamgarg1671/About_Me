@@ -87,6 +87,7 @@
                 android:layout_height="wrap_content"
                 android:layout_marginLeft="24dp"
                 android:textSize="12sp"
+                android:textColor="#0B040C"
                 android:layout_marginStart="24dp"
                 android:layout_marginTop="16dp"
                 android:background="@color/white"
@@ -190,6 +191,7 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_marginLeft="24dp"
+                android:textColor="#0B040C"
                 android:textSize="12sp"
                 android:layout_marginStart="24dp"
                 android:layout_marginTop="16dp"
@@ -302,6 +304,7 @@
                 android:layout_height="wrap_content"
                 android:layout_marginLeft="24dp"
                 android:textSize="12sp"
+                android:textColor="#0B040C"
                 android:layout_marginStart="24dp"
                 android:layout_marginTop="16dp"
                 android:background="@color/white"
@@ -410,6 +413,7 @@
                 android:layout_height="wrap_content"
                 android:layout_marginLeft="24dp"
                 android:textSize="12sp"
+                android:textColor="#0B040C"
                 android:layout_marginStart="24dp"
                 android:layout_marginTop="16dp"
                 android:background="@color/white"
@@ -506,14 +510,29 @@
 
     </androidx.constraintlayout.widget.ConstraintLayout>
 
-    <androidx.constraintlayout.widget.ConstraintLayout
-        android:id="@+id/addLinksCard"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:padding="3dp"
-        android:layout_margin="24dp"
-        android:background="@drawable/card_view_border"
-        app:layout_constraintTop_toBottomOf="@+id/contactDetails">
+            <TextView
+                android:id="@+id/addLinksCardHeading"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="24dp"
+                android:textSize="12sp"
+                android:textColor="#0B040C"
+                android:layout_marginStart="24dp"
+                android:layout_marginTop="16dp"
+                android:background="@color/white"
+                android:text=" Add Contact Info (Optional) "
+                app:layout_constraintTop_toBottomOf="@+id/contactDetails"
+                app:layout_constraintLeft_toLeftOf="@+id/addLinksCard"/>
+
+
+            <androidx.constraintlayout.widget.ConstraintLayout
+                android:id="@+id/addLinksCard"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:padding="3dp"
+                android:layout_margin="24dp"
+                android:background="@drawable/card_view_border"
+                app:layout_constraintTop_toBottomOf="@+id/contactDetails">
 
         <EditText
             android:id="@+id/yourLink"
