@@ -295,6 +295,22 @@
 
             </androidx.constraintlayout.widget.ConstraintLayout>
 
+
+            <TextView
+                android:id="@+id/addPaymentLinksHeading"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="24dp"
+                android:textSize="12sp"
+                android:layout_marginStart="24dp"
+                android:layout_marginTop="16dp"
+                android:background="@color/white"
+                android:text=" Add Payment Info "
+                app:layout_constraintTop_toBottomOf="@+id/gamesLink"
+                app:layout_constraintLeft_toLeftOf="@+id/addPaymentLinks"/>
+
+
+
             <androidx.constraintlayout.widget.ConstraintLayout
                 android:id="@+id/addPaymentLinks"
                 android:layout_width="match_parent"

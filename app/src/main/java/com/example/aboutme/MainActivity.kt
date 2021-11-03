@@ -75,6 +75,10 @@ class MainActivity : AppCompatActivity() {
         gamesLinkHeading.run {
             bringToFront()
         }
+        val addPaymentLinksHeading:TextView = findViewById(R.id.addPaymentLinksHeading)
+        addPaymentLinksHeading.run {
+            bringToFront()
+        }
 
         val storage = FirebaseStorage.getInstance()
         addProfileImage = findViewById<ImageView>(R.id.addProfileImage)
