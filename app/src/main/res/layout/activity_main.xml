@@ -107,6 +107,7 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:text="Facebook "
+            android:textSize="9sp"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintLeft_toLeftOf="@+id/addFacebookButton"
             app:layout_constraintRight_toRightOf="@+id/addFacebookButton"/>
@@ -128,6 +129,7 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:text=" Instagram "
+            android:textSize="9sp"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintLeft_toLeftOf="@+id/addInstagramButton"
             app:layout_constraintRight_toRightOf="@+id/addInstagramButton"/>
@@ -147,9 +149,9 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:text=" Linkedin "
+            android:textSize="9sp"
             app:layout_constraintRight_toRightOf="@+id/addLinkedinButton"
             app:layout_constraintLeft_toLeftOf="@+id/addLinkedinButton"
-            app:layout_constraintTop_toBottomOf="@+id/addLinkedinButton"
             app:layout_constraintBottom_toBottomOf="parent"/>
         <ImageButton
             android:id="@+id/addMoreProfileButton"
@@ -165,6 +167,7 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:text=" Add Other"
+            android:textSize="9sp"
             app:layout_constraintTop_toBottomOf="@+id/addMoreProfileButton"
             app:layout_constraintLeft_toLeftOf="@+id/addMoreProfileButton"
             app:layout_constraintRight_toRightOf="@+id/addMoreProfileButton"
@@ -197,6 +200,7 @@
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:text="Battleground"
+                    android:textSize="9sp"
                     app:layout_constraintBottom_toBottomOf="parent"
                     app:layout_constraintLeft_toLeftOf="@+id/addBattleGroundButton"
                     app:layout_constraintRight_toRightOf="@+id/addBattleGroundButton"/>
@@ -218,6 +222,7 @@
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:text="Freefire"
+                    android:textSize="9sp"
                     app:layout_constraintBottom_toBottomOf="parent"
                     app:layout_constraintLeft_toLeftOf="@+id/addFreefireButton"
                     app:layout_constraintRight_toRightOf="@+id/addFreefireButton"/>
@@ -237,6 +242,7 @@
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:text="Need for speed"
+                    android:textSize="9sp"
                     app:layout_constraintRight_toRightOf="@+id/addNeedSpeedButton"
                     app:layout_constraintLeft_toLeftOf="@+id/addNeedSpeedButton"
                     app:layout_constraintBottom_toBottomOf="parent"/>
@@ -254,6 +260,7 @@
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:text=" Add Other"
+                    android:textSize="9sp"
                     app:layout_constraintTop_toBottomOf="@+id/addGameButton"
                     app:layout_constraintLeft_toLeftOf="@+id/addGameButton"
                     app:layout_constraintRight_toRightOf="@+id/addGameButton"
@@ -286,6 +293,7 @@
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:text="Paytm"
+                    android:textSize="9sp"
                     app:layout_constraintBottom_toBottomOf="parent"
                     app:layout_constraintLeft_toLeftOf="@+id/addPaytm"
                     app:layout_constraintRight_toRightOf="@+id/addPaytm"
@@ -305,6 +313,7 @@
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:text="PhonePe"
+                    android:textSize="9sp"
                     app:layout_constraintBottom_toBottomOf="parent"
                     app:layout_constraintLeft_toLeftOf="@+id/addPhonePe"
                     app:layout_constraintRight_toRightOf="@+id/addPhonePe"
@@ -324,6 +333,7 @@
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:text="Mobikwik"
+                    android:textSize="9sp"
                     app:layout_constraintBottom_toBottomOf="parent"
                     app:layout_constraintLeft_toLeftOf="@+id/addMobiwik"
                     app:layout_constraintRight_toRightOf="@+id/addMobiwik"
@@ -344,6 +354,7 @@
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:text=" Add Other"
+                    android:textSize="9sp"
                     app:layout_constraintBottom_toBottomOf="parent"
                     app:layout_constraintLeft_toLeftOf="@+id/addMorePaymentButton"
                     app:layout_constraintRight_toRightOf="@+id/addMorePaymentButton"
@@ -377,6 +388,7 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:text="E-mail "
+            android:textSize="9sp"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintTop_toBottomOf="@+id/addEmailButton"
             app:layout_constraintLeft_toLeftOf="@+id/addEmailButton"
@@ -396,6 +408,7 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:text=" Address "
+            android:textSize="9sp"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintLeft_toLeftOf="@+id/addAddressButton"
             app:layout_constraintRight_toRightOf="@+id/addAddressButton"/>
@@ -414,6 +427,7 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:text=" Phone "
+            android:textSize="9sp"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintLeft_toLeftOf="@+id/addPhoneButton"
             app:layout_constraintRight_toRightOf="@+id/addPhoneButton"/>
@@ -432,6 +446,7 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:text=" Website "
+            android:textSize="9sp"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintLeft_toLeftOf="@+id/addWebsiteButton"
             app:layout_constraintRight_toRightOf="@+id/addWebsiteButton"/>
