@@ -15,6 +15,7 @@
         <activity android:name=".EnterPhoneNumber" />
         <activity
             android:name=".Welcome"
+            android:theme="@style/SplashTheme"
             android:exported="true">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
